@@ -38,6 +38,7 @@
         "symfony/twig-bundle": "^5.2",
         "symfony/validator": "5.2.*",
         "symfony/web-link": "5.2.*",
+        "symfony/webpack-encore-bundle": "^1.11",
         "symfony/yaml": "5.2.*",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0"
@@ -75,6 +76,10 @@
         "symfony/polyfill-php72": "*"
     },
     "scripts": {
+        "prepare":[
+            "symfony console doctrine:database:drop --if-exists --force",
+            "symfony console doctrine:database:create"
+        ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"

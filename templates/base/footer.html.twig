@@ -1,0 +1,62 @@
+<footer style="background-image: url({{asset('media/footer1.jpg')}});
+																		    background-position: center;
+																		    background-repeat: no-repeat;
+																		    background-attachment: fixed;
+																		    background-size: cover;">
+	<div class="row mt-5 mb-5">
+		<div class="col-md-3 lien">
+			<h4 style="color:#fff; text-align: center;">liens utiles</h4>
+			<ul>
+				<li><a href="http://www.education-ci.org/" target="_blank">Ministère de l'éducation</a></li>
+				<li><a href="http://www.sante.gouv.ci/" target="_blank">Ministère de la santé</a></li>
+				<li><a href="http://www.culture.gouv.ci/" target="_blank">Ministère de la culture</a></li>
+				<li><a href="http://www.cotedivoiretourisme.ci/" target="_blank">Ministère du tourisme</a></li>
+			</ul>
+		</div>
+		<div class="col-md-6" style="text-align: center;">
+			<h4 style="color:#fff;text-align: center;">Reseaux</h4>
+			<p class="social">
+				<a href="https://www.facebook.com/Mairiezuenoula/">
+					<i class="fab fa-facebook-f"></i>
+				</a>
+				<a href="#">
+					<i class="fab fa-twitter"></i>
+				</a>
+				<a href="#">
+					<i class="fab fa-youtube"></i>
+				</a>
+				<a href="#">
+					<i class="fab fa-google-plus"></i>
+				</a>
+				<a href="#">
+					<i class="fa fa-envelope"></i>
+				</a>
+			</p>
+			<p style="color:#fff;">CopryRigth &copy;2019 ebychoco</p>
+			<p style="color:#fff;">Tous droit est Reservé</p>
+
+		</div>
+		<div class="col-md-3 lien">
+			<h4 style="color:#fff; text-align: center;">liens utiles</h4>
+			<ul>
+				<li style="color:#fff;">
+					<a href="http://www.mairiedezuenoula.ci/" target="_blank">Site Marie de Zuenoula</a>
+				</li>
+				<li>
+					<a href="index.php?site=ph">Les Pharmacies de Zuenoula</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<script src="{{asset('librairies/parsley/parsley.min.js')}}"></script>
+<script src="{{asset('librairies/parsley/i18n/fr.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/js/all.js"></script>
+<script src="{{asset('js/jquery.timeago.js')}}"></script>
+<script src="{{asset('js/jquery.timeago.fr.js')}}"></script>
+<script type="text/javascript">
+	window.ParsleyValidator.setLocale('fr');
+$(document).ready(function () {
+$(".timeago").timeago();
+});
+</script>
