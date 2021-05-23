@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sport - Mairie de Zuenoula
+{% endblock %}
+
+{% block body %}
+	<ol class="breadcrumb mt-1">
+		<li class="breadcrumb-item">
+			<a href="{{ path('app_home') }}">accueil</a>
+		</li>
+		<li class="breadcrumb-item">
+			<a href="#">STRUCTURE DE LA POPULATION</a>
+		</li>
+		<li class="breadcrumb-item">
+			<a href="#">LA CULTURE DANS LA COMMUNE</a>
+		</li>
+		<li class="breadcrumb-item">
+			<a href="#">LE TOURISME DANS LA COMMNUNE</a>
+		</li>
+		<li class="breadcrumb-item active">LE SPORT DANS LA COMMUNE</li>
+	</ol>
+	<div class="container">
+		<div class="titre_actu">
+			<h1>
+				LE SPORT DANS LA COMMUNE</h1>
+		</div>
+	</div>
+	<div class="container">
+		<p>En terme de sport, la commune est animée par les activités de la Mairie, les activités des clubs et  celles des associations des jeunes dans les quartiers.</p>
+		<p>Chaque année, la Marie organise le tournoi de la municipalité à l’occasion de la fête de l’indépendance, le lancement et la clôture des activités des vacances et veille sur les activités des clubs et associations dans les quartiers comme le jeu de pétanque et de scrabble.</p>
+		<p>Les associations dans les quartiers sont très actives surtout pendant les vacances et les congés.</p>
+		<p>Les clubs sont en permanence en activité soit les séances d’entrainement, les répétitions ou les compétitions ou des trophées remportés sont présenter à la municipalité.</p>
+		<p>Les sports se pratiquent au complexe sportif de la commune en pleine dégradation, sur les espaces libres des quartiers et les entrainements se font dans les établissements scolaires après les cours.
+		</p>
+		<ul>
+			<li>Le Football</li>
+			<li>Le cyclisme</li>
+			<li>moto-cross</li>
+			<li>basketball</li>
+		</ul>
+		<p>NOUS VOUS PRENSENTONS QUELQUES PHOTOS POUR ILLUSTRER LE TEXTE</p>
+		<div class="row">
+			<div class="col-md-4 thumbnail">
+				<img class="img-responsive" src=" {{asset('media/sport/02.jpeg')}}" width="100%" alt="" srcset="">
+			</div>
+			<div class="col-md-4 thumbnail">
+				<img class="img-responsive" src="{{asset('media/sport/03.jpeg')}}" width="100%" alt="" srcset="">
+			</div>
+			<div class="col-md-4 thumbnail">
+				<img class="img-responsive" src="{{asset('media/sport/04.jpeg')}}" width="100%" alt="" srcset="">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 thumbnail">
+				<img class="img-responsive" src="{{asset('media/sport/05.jpg')}}" width="100%" alt="" srcset="">
+			</div>
+			<div class="col-md-4 thumbnail">
+				<img class="img-responsive" src="{{asset('media/sport/01.jpg')}}" width="100%" alt="" srcset="">
+			</div>
+			<div class="col-md-4 thumbnail">
+				<img class="img-responsive" src="{{asset('media/sport/04.jpeg')}}" width="100%" alt="" srcset="">
+			</div>
+		</div>
+	</div>
+{% endblock %}

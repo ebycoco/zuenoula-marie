@@ -6,10 +6,12 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface
 {
@@ -121,6 +123,61 @@ class User implements UserInterface
      */
     private $sliders;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isVerified = false;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Maire::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $maires;
+
+    /**
+     * @ORM\OneToMany(targetEntity=PresentationMairie::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $presentationMairies;
+
+    /**
+     * @ORM\OneToMany(targetEntity=OrganeDeFonctionnement::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $organeDeFonctionnements;
+
+    /**
+     * @ORM\OneToMany(targetEntity=AdministrationDeMunicipalite::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $administrationDeMunicipalites;
+
+    /**
+     * @ORM\OneToMany(targetEntity=FonctionnementMunicipale::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $fonctionnementMunicipales;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Sport::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $sports;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ImageSport::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $imageSports;
+
+    /**
+     * @ORM\OneToMany(targetEntity=HotelRestaurant::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $hotelRestaurants;
+
+    /**
+     * @ORM\OneToMany(targetEntity=GrandeSurface::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $grandeSurfaces;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isValide;
+
     public function __construct()
     {
         $this->services = new ArrayCollection();
@@ -130,6 +187,20 @@ class User implements UserInterface
         $this->flashes = new ArrayCollection();
         $this->motmaires = new ArrayCollection();
         $this->sliders = new ArrayCollection();
+        $this->maires = new ArrayCollection();
+        $this->presentationMairies = new ArrayCollection();
+        $this->organeDeFonctionnements = new ArrayCollection();
+        $this->administrationDeMunicipalites = new ArrayCollection();
+        $this->fonctionnementMunicipales = new ArrayCollection();
+        $this->sports = new ArrayCollection();
+        $this->imageSports = new ArrayCollection();
+        $this->hotelRestaurants = new ArrayCollection();
+        $this->grandeSurfaces = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->getUsername();
     }
 
     public function getId(): ?int
@@ -539,6 +610,300 @@ class User implements UserInterface
                 $slider->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Maire[]
+     */
+    public function getMaires(): Collection
+    {
+        return $this->maires;
+    }
+
+    public function addMaire(Maire $maire): self
+    {
+        if (!$this->maires->contains($maire)) {
+            $this->maires[] = $maire;
+            $maire->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMaire(Maire $maire): self
+    {
+        if ($this->maires->removeElement($maire)) {
+            // set the owning side to null (unless already changed)
+            if ($maire->getUser() === $this) {
+                $maire->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PresentationMairie[]
+     */
+    public function getPresentationMairies(): Collection
+    {
+        return $this->presentationMairies;
+    }
+
+    public function addPresentationMairy(PresentationMairie $presentationMairy): self
+    {
+        if (!$this->presentationMairies->contains($presentationMairy)) {
+            $this->presentationMairies[] = $presentationMairy;
+            $presentationMairy->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePresentationMairy(PresentationMairie $presentationMairy): self
+    {
+        if ($this->presentationMairies->removeElement($presentationMairy)) {
+            // set the owning side to null (unless already changed)
+            if ($presentationMairy->getUser() === $this) {
+                $presentationMairy->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|OrganeDeFonctionnement[]
+     */
+    public function getOrganeDeFonctionnements(): Collection
+    {
+        return $this->organeDeFonctionnements;
+    }
+
+    public function addOrganeDeFonctionnement(OrganeDeFonctionnement $organeDeFonctionnement): self
+    {
+        if (!$this->organeDeFonctionnements->contains($organeDeFonctionnement)) {
+            $this->organeDeFonctionnements[] = $organeDeFonctionnement;
+            $organeDeFonctionnement->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrganeDeFonctionnement(OrganeDeFonctionnement $organeDeFonctionnement): self
+    {
+        if ($this->organeDeFonctionnements->removeElement($organeDeFonctionnement)) {
+            // set the owning side to null (unless already changed)
+            if ($organeDeFonctionnement->getUser() === $this) {
+                $organeDeFonctionnement->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|AdministrationDeMunicipalite[]
+     */
+    public function getAdministrationDeMunicipalites(): Collection
+    {
+        return $this->administrationDeMunicipalites;
+    }
+
+    public function addAdministrationDeMunicipalite(AdministrationDeMunicipalite $administrationDeMunicipalite): self
+    {
+        if (!$this->administrationDeMunicipalites->contains($administrationDeMunicipalite)) {
+            $this->administrationDeMunicipalites[] = $administrationDeMunicipalite;
+            $administrationDeMunicipalite->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdministrationDeMunicipalite(AdministrationDeMunicipalite $administrationDeMunicipalite): self
+    {
+        if ($this->administrationDeMunicipalites->removeElement($administrationDeMunicipalite)) {
+            // set the owning side to null (unless already changed)
+            if ($administrationDeMunicipalite->getUser() === $this) {
+                $administrationDeMunicipalite->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|FonctionnementMunicipale[]
+     */
+    public function getFonctionnementMunicipales(): Collection
+    {
+        return $this->fonctionnementMunicipales;
+    }
+
+    public function addFonctionnementMunicipale(FonctionnementMunicipale $fonctionnementMunicipale): self
+    {
+        if (!$this->fonctionnementMunicipales->contains($fonctionnementMunicipale)) {
+            $this->fonctionnementMunicipales[] = $fonctionnementMunicipale;
+            $fonctionnementMunicipale->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFonctionnementMunicipale(FonctionnementMunicipale $fonctionnementMunicipale): self
+    {
+        if ($this->fonctionnementMunicipales->removeElement($fonctionnementMunicipale)) {
+            // set the owning side to null (unless already changed)
+            if ($fonctionnementMunicipale->getUser() === $this) {
+                $fonctionnementMunicipale->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Sport[]
+     */
+    public function getSports(): Collection
+    {
+        return $this->sports;
+    }
+
+    public function addSport(Sport $sport): self
+    {
+        if (!$this->sports->contains($sport)) {
+            $this->sports[] = $sport;
+            $sport->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSport(Sport $sport): self
+    {
+        if ($this->sports->removeElement($sport)) {
+            // set the owning side to null (unless already changed)
+            if ($sport->getUser() === $this) {
+                $sport->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ImageSport[]
+     */
+    public function getImageSports(): Collection
+    {
+        return $this->imageSports;
+    }
+
+    public function addImageSport(ImageSport $imageSport): self
+    {
+        if (!$this->imageSports->contains($imageSport)) {
+            $this->imageSports[] = $imageSport;
+            $imageSport->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImageSport(ImageSport $imageSport): self
+    {
+        if ($this->imageSports->removeElement($imageSport)) {
+            // set the owning side to null (unless already changed)
+            if ($imageSport->getUser() === $this) {
+                $imageSport->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|HotelRestaurant[]
+     */
+    public function getHotelRestaurants(): Collection
+    {
+        return $this->hotelRestaurants;
+    }
+
+    public function addHotelRestaurant(HotelRestaurant $hotelRestaurant): self
+    {
+        if (!$this->hotelRestaurants->contains($hotelRestaurant)) {
+            $this->hotelRestaurants[] = $hotelRestaurant;
+            $hotelRestaurant->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHotelRestaurant(HotelRestaurant $hotelRestaurant): self
+    {
+        if ($this->hotelRestaurants->removeElement($hotelRestaurant)) {
+            // set the owning side to null (unless already changed)
+            if ($hotelRestaurant->getUser() === $this) {
+                $hotelRestaurant->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|GrandeSurface[]
+     */
+    public function getGrandeSurfaces(): Collection
+    {
+        return $this->grandeSurfaces;
+    }
+
+    public function addGrandeSurface(GrandeSurface $grandeSurface): self
+    {
+        if (!$this->grandeSurfaces->contains($grandeSurface)) {
+            $this->grandeSurfaces[] = $grandeSurface;
+            $grandeSurface->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGrandeSurface(GrandeSurface $grandeSurface): self
+    {
+        if ($this->grandeSurfaces->removeElement($grandeSurface)) {
+            // set the owning side to null (unless already changed)
+            if ($grandeSurface->getUser() === $this) {
+                $grandeSurface->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getIsValide(): ?bool
+    {
+        return $this->isValide;
+    }
+
+    public function setIsValide(bool $isValide): self
+    {
+        $this->isValide = $isValide;
 
         return $this;
     }

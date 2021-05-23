@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Motmaire index{% endblock %}
+
+{% block body %}
+    <h1>Motmaire index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Conenue</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for motmaire in motmaires %}
+            <tr>
+                <td>{{ motmaire.id }}</td>
+                <td>{{ motmaire.nom }}</td>
+                <td>{{ motmaire.conenue }}</td>
+                <td>
+                    <a href="{{ path('motmaire_show', {'id': motmaire.id}) }}">show</a>
+                    <a href="{{ path('motmaire_edit', {'id': motmaire.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('motmaire_new') }}">Create new</a>
+{% endblock %}

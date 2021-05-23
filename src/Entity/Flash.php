@@ -2,14 +2,18 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\TimesTampable;
 use App\Repository\FlashRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=FlashRepository::class)
+ * @ORM\Table(name="Zuenoula_flashs") 
+ * @ORM\HasLifecycleCallbacks
  */
 class Flash
 {
+    use TimesTampable;
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actualité - Mairie de Zuenoula
+{% endblock %}
+
+{% block body %}
+	<ol class="breadcrumb mt-1">
+		<li class="breadcrumb-item">
+			<a href="{{path('app_home')}}">accueil</a>
+		</li>
+		<li class="breadcrumb-item active">Actualité</li>
+	</ol>
+	<section id="activite" class="container-fluid reveal">
+		<div class="col-12 text-center mt-5 ">
+			<h1 class="text-primary">Zuenoula news<hr>
+			</h1>
+			<!-- Three Column Section -->
+			<div class="container">
+				{% for row in articles|batch(3) %}
+					<div class="row mt-2">
+						{% for article in row %}
+							<div class="col-sm-6 col-md-4">
+								<div class="card">
+									<img src="{{asset('media/Articles/football.jpg')}}" class="card-img-top" alt="...">
+									<div class="card-body">
+										<h5 class="card-title">Card title</h5>
+										<h6 style="font-size:12px;">Publier :
+											<time class="timeago" datetime="04/06/2020">
+												04/06/2020</time>
+										</h6>
+										<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quis numquam iusto recusandae quas aliquam excepturi possimus illo quo eum vero, harum aperiam, quos, veniam repellendus similique corrupti nobis sequi!(...)&nbsp;</p>
+										<div style="text-align: center;">
+											<a style="color:#fff;text-align: center;" class="btn btn-warning" href="view_article_Index.php?id='.$item['id'].'">
+												<span class="glyphicon glyphicon-eye-open"></span>
+												Voir</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				{% else %}
+					<div class="col-sm-6 col-md-4">
+						<div class="card">
+							<img src="{{asset('media/Articles/football.jpg')}}" class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title">Card title</h5>
+								<h6 style="font-size:12px;">Publier :
+									<time class="timeago" datetime="04/06/2020">
+										04/06/2020</time>
+								</h6>
+								<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quis numquam iusto recusandae quas aliquam excepturi possimus illo quo eum vero, harum aperiam, quos, veniam repellendus similique corrupti nobis sequi!(...)&nbsp;</p>
+								<div style="text-align: center;">
+									<a style="color:#fff;text-align: center;" class="btn btn-warning" href="view_article_Index.php?id='.$item['id'].'">
+										<span class="glyphicon glyphicon-eye-open"></span>
+										Voir</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+{% endblock %}

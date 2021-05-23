@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detail Article - Mairie de Zuenoula
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-4">
+		<div class="row">
+			<div class="col-md-4">
+				<img src="{{ asset('media/Articles/football.jpg')}}" class="card-img-top">
+			</div>
+			<div class="col-md-8">
+
+				<div class="row">
+					<div class="col-lg-8">
+						<p style="color: #ff5500;">
+							<i style="color: #838383;" class="fas fa-user-circle"></i>
+							La Rédaction:
+																																			ERIC</p>
+					</div>
+					<div class="col-lg-4">
+						<p class="text-center bg-success text-white text-lowercase" style="font-size:11px;border-radius:5px;">
+							Sport
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h1>Sport</h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio repellat debitis, in fuga quaerat iusto natus tempore accusantium, temporibus, accusamus ab voluptate itaque aliquam magnam atque non earum dignissimos similique.</p>
+						3
+						<i class="text-primary fa fa-comment" aria-hidden="true"></i>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-8">
+				<div class="container">
+					<div class="row">
+						<div
+							class="col-md-5 col-lg-4 col-xl-3 mb-5">
+							<!-- Button trigger modal -->
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+								Commenter
+							</button>
+						</div>
+					</div>
+
+					<!-- Modal -->
+					<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+{% endblock %}

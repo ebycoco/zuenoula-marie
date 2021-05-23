@@ -1,0 +1,195 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hotel - Mairie de Zuenoula
+{% endblock %}
+
+{% block body %}
+	<ol class="breadcrumb mt-1">
+		<li class="breadcrumb-item">
+			<a href="{{path('app_home')}}">accueil</a>
+		</li>
+		<li class="breadcrumb-item">
+			<a href="#">STRUCTURE DE LA POPULATION</a>
+		</li>
+		<li class="breadcrumb-item">
+			<a href="#">LA CULTURE
+			</a>
+		</li>
+		<li class="breadcrumb-item">
+			<a href="#">LE TOURISME</a>
+		</li>
+		<li class="breadcrumb-item">
+			<a href="{{path('sport_index')}}">LE SPORT</a>
+		</li>
+		<li class="breadcrumb-item active">LES HÔTELS, RESTAURANTS ET LES GRANDES SURFACES DE LA COMMUNE</li>
+	</ol>
+	<div class="container">
+		<div class="titre_actu">
+			<h1>
+				Restaurants et Hotels de Zuenoula
+				<hr>
+			</h1>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class=" col-md-4">
+				<div class="thumbnail">
+					<img class="img-responsive" src="{{asset('media/hotel3.jpg')}}" width="100%" alt="...">
+					<div style="text-align:center;" class="caption">
+						<h3>Hotel faya</h3>
+						<p>La cour de faya
+						</p>
+						<p>
+							<a href="#" class="btn btn-info" role="button">
+								<span class="glyphicon glyphicon-eye-open"></span>
+								Voir</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="thumbnail">
+					<img class="img-responsive" src="{{asset('media/hotel2.jpg')}}" width="100%" alt="...">
+					<div style="text-align:center;" class="caption">
+						<h3>Hotel faya</h3>
+						<p>Le grand restaurant de Zuenoula</p>
+						<p>
+							<a href="#" class="btn btn-info" role="button">
+								<span class="glyphicon glyphicon-eye-open"></span>
+								Voir</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class=" col-md-4">
+				<div class="thumbnail">
+					<img class="img-responsive" src="{{asset('media/commisarat.jpg')}}" width="100%" alt="...">
+					<div style="text-align:center;" class="caption">
+						<h3>
+							Complexe Hotelier Au Commencement</h3>
+						<p>
+							<a href="#" class="btn btn-info" role="button">
+								<span class="glyphicon glyphicon-eye-open"></span>
+								Voir</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class=" col-md-4">
+				<div class="thumbnail">
+					<img class="img-responsive" src="{{asset('media/h1.jpg')}}" width="100%" alt="...">
+					<div style="text-align:center;" class="caption">
+						<h3>Complexe Hotelier Au Commencement</h3>
+						<p>restauration du Complexe Hotelier
+						</p>
+						<p>
+							<a href="#" class="btn btn-info" role="button">
+								<span class="glyphicon glyphicon-eye-open"></span>
+								Voir</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class=" col-md-4">
+				<div class="thumbnail">
+					<img class="img-responsive" src="{{asset('media/h2.jpg')}}" width="100%" alt="...">
+					<div style="text-align:center;" class="caption">
+						<h3>Complexe Hotelier Au Commencement</h3>
+						<p>restauration du Complexe Hotelier
+						</p>
+						<p>
+							<a href="#" class="btn btn-info" role="button">
+								<span class="glyphicon glyphicon-eye-open"></span>
+								Voir</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class=" col-md-4">
+				<div class="thumbnail">
+					<img class="img-responsive" src="{{asset('media/hotel.jpg')}}" width="100%" alt="...">
+					<div style="text-align:center;" class="caption">
+						<h3>Hotel faya</h3>
+						<p>La chambre de faya
+						</p>
+						<p>
+							<a href="#" class="btn btn-info" role="button">
+								<span class="glyphicon glyphicon-eye-open"></span>
+								Voir</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="titre_actu">
+			<h1>
+				LES GRANDES SURFACES DE LA COMMUNE
+				<hr>
+			</h1>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class=" col-md-4">
+				<div class="thumbnail">
+					<img class="img-responsive" src="{{asset('media/hopital.jpg')}}" width="100%" alt="...">
+					<div style="text-align:center;" class="caption">
+						<h3>Hopital de Zuenoula</h3>
+						<p>
+							<a href="#" class="btn btn-info" role="button">
+								<span class="glyphicon glyphicon-eye-open"></span>
+								Voir</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class=" col-md-4">
+				<div class="thumbnail">
+					<img class="img-responsive" src="{{asset('media/tresor.jpg')}}" width="100%" alt="...">
+					<div style="text-align:center;" class="caption">
+						<h3>Tresor public</h3>
+						<p>
+							<a href="#" class="btn btn-info" role="button">
+								<span class="glyphicon glyphicon-eye-open"></span>
+								Voir</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class=" col-md-4">
+				<div class="thumbnail">
+					<img class="img-responsive" src="{{asset('media/total.jpg')}}" width="100%" alt="...">
+					<div style="text-align:center;" class="caption">
+						<h3>
+							Station SIFO ENERGIE</h3>
+						<p>
+							<a href="#" class="btn btn-info" role="button">
+								<span class="glyphicon glyphicon-eye-open"></span>
+								Voir</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class=" col-md-4">
+				<div class="thumbnail">
+					<img class="img-responsive" src="{{asset('media/commi.jpg')}}" width="100%" alt="...">
+					<div style="text-align:center;" class="caption">
+						<h3>Commissariat de zuenoula</h3>
+						<p>
+							<a href="#" class="btn btn-info" role="button">
+								<span class="glyphicon glyphicon-eye-open"></span>
+								Voir</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

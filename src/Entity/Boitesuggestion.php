@@ -2,14 +2,18 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\TimesTampable;
 use App\Repository\BoitesuggestionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=BoitesuggestionRepository::class)
+ * @ORM\Table(name="Zuenoula_boite_suggestions") 
+ * @ORM\HasLifecycleCallbacks
  */
 class Boitesuggestion
 {
+    use TimesTampable;
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

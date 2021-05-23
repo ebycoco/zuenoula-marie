@@ -1,9 +1,5 @@
 @import "~bootstrap/scss/bootstrap";
-/******** TOP **************/
-.top-bar {
-  height: 6rem;
-  padding: 0.5rem 0;
-}
+/******** TOP **************/ 
 body {
   font-family: "lato", sans-serif;
   background: #f8f8f8;
@@ -327,9 +323,10 @@ footer h3 {
 /************ information ******************************************/
 
 .piece {
-  margin: 7px;
+  margin: 7px; 
   background-color: #fff;
   border: 3px solid #cccccc;
+  border-radius: 5px;
 }
 
 /************ admin ******************************************/

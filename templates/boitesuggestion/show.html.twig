@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Boitesuggestion{% endblock %}
+
+{% block body %}
+    <h1>Boitesuggestion</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ boitesuggestion.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ boitesuggestion.nom }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ boitesuggestion.email }}</td>
+            </tr>
+            <tr>
+                <th>Message</th>
+                <td>{{ boitesuggestion.message }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('boitesuggestion_index') }}">back to list</a>
+
+    <a href="{{ path('boitesuggestion_edit', {'id': boitesuggestion.id}) }}">edit</a>
+
+    {{ include('boitesuggestion/_delete_form.html.twig') }}
+{% endblock %}

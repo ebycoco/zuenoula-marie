@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Suggestion - Mairie de Zuenoula
+{% endblock %}
+
+{% block body %}
+	<ol class="breadcrumb mt-1">
+		<li class="breadcrumb-item">
+			<a href="index.php">accueil</a>
+		</li>
+		<li class="breadcrumb-item active">BOITE A SUGGESTION</li>
+	</ol>
+	<div class="container mb-3">
+		{% include "messageAlert/messageAlert.html.twig" %}
+		<h3 class="text-center mt-2 mb-3">BOITE A SUGGESTION DE LA MAIRIE</h3>
+		<div class="row">
+			<div class="col-md-6 offset-md-2 well">
+				<div class="contact__form">
+					{{ form_start(form) }}
+					<div class="form-group">
+						{{ form_row(form.nom) }}
+					</div>
+					<div class="form-group">
+						{{ form_row(form.email) }}
+					</div>
+					<div class="form-group">
+						{{ form_row(form.message) }}
+					</div>
+					<input type="submit" class="form-control submit mt-3" value="Envoyer message">
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

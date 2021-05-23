@@ -1,8 +1,8 @@
 <footer style="background-image: url({{asset('media/footer1.jpg')}});
-																		    background-position: center;
-																		    background-repeat: no-repeat;
-																		    background-attachment: fixed;
-																		    background-size: cover;">
+																										    background-position: center;
+																										    background-repeat: no-repeat;
+																										    background-attachment: fixed;
+																										    background-size: cover;">
 	<div class="row mt-5 mb-5">
 		<div class="col-md-3 lien">
 			<h4 style="color:#fff; text-align: center;">liens utiles</h4>
@@ -49,8 +49,13 @@
 		</div>
 	</div>
 </footer>
-<script src="{{asset('librairies/parsley/parsley.min.js')}}"></script>
-<script src="{{asset('librairies/parsley/i18n/fr.js')}}"></script>
+<script src="{{asset('assets/js/jquery.counterup.min.js')}}"></script>
+<script src="{{asset('assets/js/jquery.waypoints.min.js')}}"></script>
+<script>
+	jQuery(document).ready(function ($) {
+$('.counter').counterUp({delay: 10, time: 1000});
+});
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/js/all.js"></script>
 <script src="{{asset('js/jquery.timeago.js')}}"></script>
 <script src="{{asset('js/jquery.timeago.fr.js')}}"></script>

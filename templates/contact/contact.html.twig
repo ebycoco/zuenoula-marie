@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact - Mairie de Zuenoula
+{% endblock %}
+
+{% block body %}
+	<ol class="breadcrumb mt-1">
+		<li class="breadcrumb-item">
+			<a href="index.php">accueil</a>
+		</li>
+		<li class="breadcrumb-item">
+			<a href="suggestion.php">BOITE A SUGGESTION</a>
+		</li>
+		<li class="breadcrumb-item">
+			<a href="information.php">INFORMATIONS SUR LES SERVICES</a>
+		</li>
+		<li class="breadcrumb-item active">CONTACTEZ LES SERVICES DE LA MAIRIE</li>
+	</ol>
+	<div class="container-fluid mb-2">
+		{% include "messageAlert/messageAlert.html.twig" %}
+		<h3 class="text-center mt-2 mb-3">CONTACTEZ LES SERVICES DE LA MAIRIE</h3>
+		<div class="row">
+			<div class="col-md-8 offset-md-2">
+				{{ form_start(form) }}
+				<fieldset>
+					<div class="form-row">
+						<div class=" col-md-4">
+							{{ form_row(form.name) }}
+						</div>
+						<div class="col-md-4 ">
+							{{ form_row(form.email) }}
+
+						</div>
+						<div class="col-md-4 ">
+							{{ form_row(form.service) }}
+						</div>
+					</div>
+					<div class="form_row">
+						<div class="col-md-12">
+							{{ form_row(form.objet) }}
+						</div>
+					</div>
+					<div class="form_row">
+						<div class="col-md-12">
+							{{ form_row(form.message) }}
+						</div>
+					</div>
+					<div class="form_row mb-3 mt-2">
+						<div class="col-md-12">
+							<p style="text-align: center;">
+								<button type="submit" name="envoie" class="btn btn-primary">
+									<font style="vertical-align: inherit;">
+										<font style="vertical-align: inherit;">Envoyé</font>
+									</font>
+								</button>
+							</p>
+						</div>
+					</div>
+				</fieldset>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

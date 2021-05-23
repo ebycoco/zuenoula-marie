@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Boitesuggestion index{% endblock %}
+
+{% block body %}
+    <h1>Boitesuggestion index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for boitesuggestion in boitesuggestions %}
+            <tr>
+                <td>{{ boitesuggestion.id }}</td>
+                <td>{{ boitesuggestion.nom }}</td>
+                <td>{{ boitesuggestion.email }}</td>
+                <td>{{ boitesuggestion.message }}</td>
+                <td>
+                    <a href="{{ path('boitesuggestion_show', {'id': boitesuggestion.id}) }}">show</a>
+                    <a href="{{ path('boitesuggestion_edit', {'id': boitesuggestion.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('boitesuggestion_new') }}">Create new</a>
+{% endblock %}

@@ -1,97 +1,98 @@
-<!-- Top Bar -->
-<div>
-	<div class="top-bar" style="background-image: url({{asset('media/bd__top1.png')}});background-repeat:no-repeat;background-size:cover;">
+<div
+	class="fixed-top">
+	<!-- Top Bar -->
+	<div class="">
+		<div class="top-bar">
+			<img src="{{asset('media/bd__top1.png')}}" width="100%" alt="" srcset="">
+		</div>
+	</div>
+	<!-- End Top Bar -->
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container">
-			<div class="col-12 text-right">
-				<img class="img-responsive" src="" alt="">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ">
+					<li class="nav-item {{set_active_route('app_home')}}">
+						<a class="nav-link" href="{{path('app_home')}}">
+							Accueil
+						</a>
+					</li>
+					<li class="nav-item dropdown {{set_active_route('article_liste')}} {{set_active_route('video_liste')}}">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Nouvelle
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="{{path('article_liste')}}">Actualité</a>
+							<a class="dropdown-item" href="{{path('video_liste')}}">Actualité en vidéo</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown {{set_active_route('Presentation_maire')}} {{set_active_route('Presentation_fonctionnement')}} {{set_active_route('Presentation_administration')}}">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Presentation
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="{{path('commune_index')}}">La commune en bref</a>
+							<a class="dropdown-item" href="{{path('Presentation_maire')}}">La mairie et son administration</a>
+<a class="dropdown-item" href="{{path('activites_index')}}">Les différentes activités économique de la commune</a>
+
+							<a class="dropdown-item" href="{{path('commune_image')}}">La commune en images</a>
+
+						</div>
+					</li>
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Projets
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="">La construction ou la réhabilisation de structure</a>
+							<a class="dropdown-item" href="#">La participation citoyenne</a>
+							<a class="dropdown-item" href="#">Développement durable</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown {{set_active_route('sport_index')}}{{set_active_route('hotel_index')}}">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Atouts
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="">structure de la population et dynamique demographique</a>
+							<a class="dropdown-item" href="#">CULTURE
+							</a>
+							<a class="dropdown-item" href="#">TOURISME
+							</a>
+							<a class="dropdown-item" href="{{path('sport_index')}}">SPORT</a>
+							<a class="dropdown-item" href="{{path('hotel_index')}}">HÔTELS,RESTAURANTS ET LES GRANDES SURFACES</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Les annonces
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="">Offres d'emploie</a>
+							<a class="dropdown-item" href="#">Les annonces</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown {{set_active_route('boitesuggestion_nouveau')}} {{set_active_route('information_service')}} {{set_active_route('contact_nouveau')}}">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Bon a savoir
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="{{path('boitesuggestion_nouveau')}}">Boite a suggestion</a>
+							<a class="dropdown-item" href="{{path('information_service')}}">Information sur les services</a>
+							<a class="dropdown-item" href="{{path('contact_nouveau')}}">Contacter nos services</a>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{path('app_login')}}">Login</a>
+					</li>
+
+
+				</ul>
 			</div>
 		</div>
-	</div>
+	</nav>
 </div>
-<!-- End Top Bar -->
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<div class="container">
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarResponsive">
-			<ul class="navbar-nav ">
-				<li class="nav-item">
-					<a class="nav-link" href="{{path('app_home')}}">
-						Accueil
-					</a>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Nouvelle
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="">Actualité</a>
-						<a class="dropdown-item" href="#">Actualité en vidéo</a>
-					</div>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Presentation
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="">La commune en bref</a>
-						<a class="dropdown-item" href="#">La mairie et son administration</a>
-						<a class="dropdown-item" href="#">Les différentes activités économique de la commune</a>
-						<a class="dropdown-item" href="#">La commune en images</a>
-					</div>
-				</li>
-
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Projets
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="">La construction ou la réhabilisation de structure</a>
-						<a class="dropdown-item" href="#">La participation citoyenne</a>
-						<a class="dropdown-item" href="#">Développement durable</a>
-					</div>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Atouts
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="">structure de la population et dynamique demographique</a>
-						<a class="dropdown-item" href="#">CULTURE
-						</a>
-						<a class="dropdown-item" href="#">TOURISME
-						</a>
-						<a class="dropdown-item" href="#">SPORT</a>
-						<a class="dropdown-item" href="#">HÔTELS,RESTAURANTS ET LES GRANDES SURFACES</a>
-					</div>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Les annonces
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="">Offres d'emploie</a>
-						<a class="dropdown-item" href="#">Les annonces</a>
-					</div>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Bon a savoir
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="">Boite a suggestion</a>
-						<a class="dropdown-item" href="#">Information sur les services</a>
-						<a class="dropdown-item" href="#">Nos contacte</a>
-					</div>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Login</a>
-				</li>
-
-
-			</ul>
-		</div>
-	</div>
-</nav>

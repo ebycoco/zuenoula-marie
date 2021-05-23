@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vidéo - Mairie de Zuenoula
+{% endblock %}
+
+{% block body %}
+	<ol class="breadcrumb mt-1">
+		<li class="breadcrumb-item">
+			<a href="{{path('app_home')}}">accueil</a>
+		</li>
+		<li class="breadcrumb-item">
+			<a href="{{path('article_liste')}}">Actulité</a>
+		</li>
+		<li class="breadcrumb-item active">Vidéo</li>
+	</ol>
+	<section id="activite" class="container-fluid reveal">
+		<div class="col-12 text-center mt-5 ">
+			<h1 class="text-primary">actu-video Zuenoula<hr>
+			</h1>
+			<!-- Three Column Section -->
+			<div class="container">
+				<div class="col-md-4 reveal-1">
+					<div class="card bg-white rounded shadow article">
+						<div class="mw-100 overflow-hidden">
+							<iframe src="https://www.youtube.com/embed/4DVH5T" frameborder="0" allowfullscreen></iframe>
+						</div>
+						<div class="card-body">
+							<h5 class="card-title">test</h5>
+							<hr>
+							<p class="text-left">Publier :
+								<time class="timeago">03/11/2021</time>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

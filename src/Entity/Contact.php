@@ -2,14 +2,18 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\TimesTampable;
 use App\Repository\ContactRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=ContactRepository::class)
+ * @ORM\Table(name="Zuenoula_contacts") 
+ * @ORM\HasLifecycleCallbacks
  */
 class Contact
 {
+    use TimesTampable;
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

@@ -1,0 +1,27 @@
+{% for row  in articles|batch(3)  %}
+	<div class="row mt-2 mb-2" aiv="cls: aiv-slide-left; children: .card; delay: 200; delay_all: 500; repeat;">
+		{% for article in row  %}
+			<div class=" col-md-4">
+				<div class="card">
+					<img src="{{ vich_uploader_asset(article, 'imageFile')}}" class="card-img-top" alt="{{article.titre}}">
+					<div class="card-body">
+						<h5 class="card-title">{{article.titre}}</h5>
+
+						<h6 style="font-size:12px;">Publier :
+							<time class="timeago" datetime="04/06/2020">
+								04/06/2020</time>
+						</h6>
+						<p class="text-justify">{{article.contenue|u.truncate(20,'...',false)|raw}}</p>
+
+
+						<div style="text-align: center;">
+							<a style="color:#fff;text-align: center;" class="btn btn-warning" href="#">
+								<span class="glyphicon glyphicon-eye-open"></span>
+								Voir</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endfor %}

@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Information - Mairie de Zuenoula
+{% endblock %}
+
+{% block body %}
+	<ol class="breadcrumb mt-1">
+		<li class="breadcrumb-item">
+			<a href=" {{ path('app_home') }}">accueil</a>
+		</li>
+		<li class="breadcrumb-item">
+			<a href="suggestion.php">BOITE A SUGGESTION</a>
+		</li>
+		<li class="breadcrumb-item active">INFORMATIONS SUR LES SERVICES</li>
+	</ol>
+	<div class="container-fluid">
+		<div class="row mt-4 mb-4">
+			<div class="col-md-1"></div>
+			<div class="piece col-md-10 pt-4">
+				<h1 style=" text-align:center;">
+					<img src="{{asset('media/logo mairie zuenoula.png')}}" width="60px" alt="">
+					LES DOCUMENTS ADMINSTRATIFS</h1>
+				<h2 style=" text-align:center;">PIECES A FOURNIR POUR L’ETABLISSEMENT D’UN CERTIFICAT DE ET D’ENTRETIEN</h2>
+				<p>
+					Extrait de naissance datant de moins de 3 mois des différents enfants</p>
+
+				<h3 style=" text-align:center;">Concernant le certificat de vie individuelle</h3>
+				<p>
+					Produire une carte nationale d’identité, ou une carte consulaire.
+					<br>
+					Plus un timbre de 500 F à acheter à la Mairie.
+					<br>
+					Ceci concerne les personnes ayant été admis à la retraite.<br>
+					Date de validité un (1) an renouvelable.</p>
+				<h3 style=" text-align:center;">PIÈCES E FOURNIR POUR UNE DÉCLARATION DE DÉCÈS</h3>
+
+				<h3 style=" text-align:center;">Concernant les décès à domicile</h3>
+				<p>
+					Il faut produire un "DE PAR LA LOI" délivré par le commissariat le plus proche
+																																																																																                                    En plus de la pièce d’identité du défunt.</p>
+
+				<h3 style=" text-align:center;">Concernant les décès à l’hôpital</h3>
+				<p>
+					Produire un procès verbal de constations de décès
+																																																																																                                    En plus de la pièce d’identité du défunt.</p>
+
+				<h3 style=" text-align:center;">PIÈCES A FOURNIR POUR CONSTITUER UN DOSSIER DE MARIAGE</h3>
+
+				<h3 style=" text-align:center;">Pour les futurs conjoints Ivoiriens</h3>
+				<ol>
+					<li>Extrait de naissance ou jugement supplétif, daté de moins de 3 mois portant la mention "En vue de mariage"</li>
+					<li>Certificat de résidence daté de moins d’un mois, pour chacun des futurs époux</li>
+					<li>Photocopie des CNI ou Passeport ou Permis de conduire des époux et des témoins</li>
+					<li>(
+						<b>Divorcé</b>
+						) : Produire un certificat de divorce</li>
+					<li>(
+						<b>Veuf ou veuve</b>
+						) : Produire un certificat de décès du premier conjoint</li>
+					<li>(
+						<b>Militaire</b>
+						) : Produire une autorisation l’autorité compétente et un certificat de présence de corps</li>
+					<li>(
+						<b>Mineur</b>
+						) : Produire une autorisation du père ou de la mère (si le père n’est pas)</li>
+					<li>(
+						<b>Orphelin mineur</b>
+						) : Produire une autorisation du tuteur légal</li>
+					<li>(
+						<b>Moins de 18 ans</b>
+						) : Produire une autorisation spéciale du président de la république S/C du procureur de la République</li>
+				</ol>
+				<h3 style=" text-align:center;">Pour les non Ivoiriens</h3>
+				<p>
+					Un certificat de capacité matrimoniale délivré par l’ambassade du pays d’origine.
+					<br>
+					S’adresser au juriste consul si le pays n’est pas représenté par une ambassade.</p>
+
+				<h3 style=" text-align:center;">PIÈCES A FOURNIR POUR LA LEGALISATION D’UN DOC</h3>
+
+				<h3 style=" text-align:center;">AUTORISATION PARENTALE</h3>
+
+				<p>
+					Photocopie de la pièce d’identité, attestation ou passeport de la personne qui donne l’autorisation
+				</p>
+				<h3 style=" text-align:center;">PROCURATION</h3>
+				<p>
+					Photocopie de la pièce d’identité, attestation ou passeport de la personne qui donne procuration
+				</p>
+				<h3 style=" text-align:center;">ATTESTATION DE VENTE</h3>
+				<p>
+					Photocopie de la pièce d’identité, attestation ou passeportde la personne qui vend
+				</p>
+				<h3 style=" text-align:center;">MUTATION</h3>
+				<p>
+					Photocopie de la pièce d’identité, attestation ou passeport + carte grise de la personne qui fait la mutation
+				</p>
+				<h3 style=" text-align:center;">CERTIFICATION</h3>
+				<p>
+					Original du document + la Photocopie
+					<br>
+					<h3 style=" text-align:center;">PIÈCES A FOURNIR POUR UNE DECLARATION DE NAISSANCE</h3>
+
+				</p>
+				<ul>
+					<li>Photocopie des pièces ( CNI, extrait de naissance, carte consulaire etc) des parents.</li>
+					<li>certificat médical de naissance de l’enfant</li>
+				</ul>
+				<p>Père marié</p>
+
+				<ul>
+					<li>Photocopie de l’extrait de mariage ou</li>
+					<li>Photocopie de la page du carnet de mariage</li>
+				</ul>
+				<p>Père décédé
+				</p>
+				<ul>
+					<li>Extrait de décès</li>
+					<li>Pièce de la mère</li>
+				</ul>
+				<p>
+					Mère décédée</p>
+				<ul>
+					<li>Extrait de décès</li>
+					<li>Pièce de la père</li>
+				</ul>
+				<p>
+					NB : Prévoir les timbres à acheter à la Mairie
+					<br>
+					Délai de déclaration : 3 mois après la naissance
+					<br>
+					DECLARATION HORS DELAI
+					<br>
+					•	Faire une demande pour l’obtention d’un certificat de non déclaration.
+					<br>
+					•	Se rendre au tribunal de première instance du plateau muni des pièces d’identités des parents et le certificat édical de naissance de l’enfant.
+				</p>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</div>
+{% endblock %}

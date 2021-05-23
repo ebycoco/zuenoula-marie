@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Maire - Mairie de Zuenoula
+{% endblock %}
+
+{% block body %}
+	<ol class="breadcrumb mt-1">
+		<li class="breadcrumb-item">
+			<a href="{{path('app_home')}}">accueil</a>
+		</li>
+		<li class="breadcrumb-item">
+			<a href="#">La commune en bref</a>
+		</li>
+		<li class="breadcrumb-item active">La mairie et son Administration</li>
+	</ol>
+	<div class="container mt-4">
+		<div class="titre_actu">
+			<h1>
+				la mairie et son administration
+				<hr>
+			</h1>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				{% include "mairie/_sidebar.html.twig" %}
+			</div>
+
+			<div class="col-md-9">
+				<h4 align="center" style="text-transform: uppercase; font-weight: bold;">PRESENTATION DE LA MAIRIE</h4><br>
+				<div class="row">
+					<div class="col-md-4">
+						<img src="{{asset('media/maire/IMG-20191004-WA0001.jpg')}}" width="100%" alt="" srcset="">
+						<legend>
+							<small>DJE BI DJE Olivier Vamy</small>
+						</legend>
+					</div>
+					<div class="col-md-8">
+						<p>Construite sur la rive gauche du boulevard principal de la ville en 19…, sur un seul niveau,  la Mairie est située à proximité de la sous-préfecture de Zuenoula. Le bâtiment se présente sous la forme d'une villa.
+						</p>
+					</div>
+				</div>
+				<h4 align="center" style="text-transform: uppercase; font-weight: bold;">LES DIFFERENTS MAIRES DEPUIS LA CREATION DE LA COMMUNE.</h4>
+				<p>
+					1er DJE BI DJE Alexandre
+				</p>
+				<p>
+					2ème DOUA BI TOUHI ROGER
+				</p>
+				<p>
+					3ème ZAN BI GOI Ferdinand
+				</p>
+				<p>
+					4ème YAO Clément
+				</p>
+				<p>
+					5ème DJE BI DJE Olivier Vamy
+				</p>
+			</div>
+		</div>
+	</div>
+{% endblock %}

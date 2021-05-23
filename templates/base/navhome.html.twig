@@ -1,0 +1,136 @@
+<div class="container">
+	<nav class="navbar navbar-default navbar navbar-fixed-top" role="navigation">
+		<div id="haut">
+			<img class="img-responsive" src="{{asset('media/bd__top1.png')}}" alt="">
+		</div>
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#moMenue">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class=" collapse navbar-collapse" id="moMenue">
+				<div class="padding-nav">
+					<ul class="nav navbar-nav left">
+						<li class="<?= set_active('index') ?>">
+							<a href="{{ path('app_home') }}">Accueil</a>
+						</li>
+						<li class="<?= set_active('news') ?> <?= set_active('news_v') ?>">
+							<a href="#"><?= $menu['nouvelles'][$_SESSION['locale']] ?></a>
+							<ul class="submenu">
+								<li>
+									<a href="news.php">
+										<?= $menu['actualite'][$_SESSION['locale']] ?></a>
+								</li>
+								<li>
+									<a href="news_v.php">
+										<?= $menu['actualite_en_video'][$_SESSION['locale']] ?>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="<?= set_active('communeB') ?><?= set_active('mairie') ?><?= set_active('activite') ?><?= set_active('communeI') ?><?= set_active('organes_fonctionnement') ?><?= set_active('administration') ?><?= set_active('la_maire') ?>">
+							<a href="la_maire.php"><?= $menu['presentation'][$_SESSION['locale']] ?></a>
+							<ul class="submenu">
+								<li>
+									<a href="communeB.php">
+										<?= $menu['la_commune_en_bref'][$_SESSION['locale']] ?></a>
+								</li>
+								<li>
+									<a href="mairie.php">
+										<?= $menu['la_mairie_et_son_Administration'][$_SESSION['locale']] ?></a>
+								</li>
+								<li>
+									<a href="activite.php">
+										<?= $menu['la_mairie_son_Administration'][$_SESSION['locale']] ?></a>
+								</li>
+								<li>
+									<a href="communeI.php">La commune en images</a>
+								</li>
+							</ul>
+						</li>
+						<li class="<?= set_active('construction'); ?><?= set_active('participation'); ?><?= set_active('developpement'); ?>">
+							<a href="#">
+								<?= $menu['projets'][$_SESSION['locale']] ?></a>
+							<ul class="submenu">
+								<li>
+									<a href="construction.php">la construction ou la réhabilisation de structure
+									</a>
+								</li>
+								<li>
+									<a href="participation.php">la participation citoyenne</a>
+								</li>
+								<li>
+									<a href="developpement.php">développement durable</a>
+								</li>
+							</ul>
+						</li>
+						<li class="<?= set_active('structure'); ?><?= set_active('culture'); ?><?= set_active('tourisme'); ?><?= set_active('sport'); ?><?= set_active('hotel'); ?>">
+							<a href="#">
+								<?= $menu['atouts'][$_SESSION['locale']] ?></a>
+							<ul class="submenu">
+								<li>
+									<a href="structure.php">STRUCTURE DE LA POPULATION ET DYNAMIQUE
+																				                                            DEMOGRAPHIQUE</a>
+								</li>
+								<li>
+									<a href="culture.php">LA CULTURE DANS LA COMMUNE</a>
+								</li>
+								<li>
+									<a href="tourisme.php">LE TOURISME DANS LA COMMNUNE</a>
+								</li>
+								<li>
+									<a href="sport.php">LE SPORT DANS LA COMMUNE</a>
+								</li>
+								<li>
+									<a href="hotel.php">lES HÔTELS, RESTAURANTS ET LES GRANDES SURFACES DE LA
+																				                                            COMMUNE</a>
+								</li>
+							</ul>
+						</li>
+						<li class="<?= set_active('offres'); ?><?= set_active('anonces'); ?>">
+							<a href="#">les_annonces<?= $menu['les_annonces'][$_SESSION['locale']] ?></a>
+							<ul class="submenu">
+								<li>
+									<a href="offres.php">OFFRES D'EMPLOI DANS LA COMMUNE</a>
+								</li>
+								<li>
+									<a href="anonces.php">LES ANNONCES DANS LA COMMUNE</a>
+								</li>
+							</ul>
+						</li>
+						<li class="<?= set_active('suggestion'); ?><?= set_active('information'); ?><?= set_active('contact'); ?>">
+							<a href="#"><?= $menu['bon_a_savoir'][$_SESSION['locale']] ?></a>
+							<ul class="submenu">
+								<li>
+									<a href="suggestion.php">BOITE A SUGGESTION</a>
+								</li>
+								<li>
+									<a href="information.php">INFORMATIONS SUR LES SERVICES</a>
+								</li>
+								<li>
+									<a href="contact.php">CONTACTEZ LES SERVICES DE LA MAIRIE</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="suggestion.php">Langue</a>
+							<ul class="submenu">
+								<li>
+									<a href="index.php?lang=fr">Français</a>
+								</li>
+								<li>
+									<a href="index.php?lang=en">Anglais</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+</div>

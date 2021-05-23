@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration - Mairie de Zuenoula
+{% endblock %}
+
+{% block body %}
+	<ol class="breadcrumb mt-1">
+		<li class="breadcrumb-item">
+			<a href="{{path('app_home')}}">accueil</a>
+		</li>
+		<li class="breadcrumb-item">
+			<a href="#">La commune en bref</a>
+		</li>
+		<li class="breadcrumb-item active">La mairie et son Administration</li>
+	</ol>
+	<div class="container">
+		<div class="titre_actu">
+			<h1>
+				la mairie et son administration
+				<hr>
+			</h1>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				{% include "mairie/_sidebar.html.twig" %}
+			</div>
+			<div class="col-md-9">
+				<h4 align="center" style="text-transform: uppercase; font-weight: bold;">L’ADMINISTRATION MUNICIPALE</h4>
+				<p>L’administration Municipale est composée d’un ensemble de directions et de services. Toute l’administration est coordonnée par le secrétaire général sous l’autorité du Maire. La mairie de Zuenoula compte  42 agents dont quatre (04) fonctionnaires et agents municipaux.
+				</p>
+				<p style="background: blue; font-weight: bold; text-transform: uppercase; text-align: center; color: #fff;">Le cabinet du Maire</p>
+				<p>C’est un organe rattaché directement au Maire et qui l’assiste dans la gestion des affaires politiques.
+				</p>
+				<ul>
+					<li>Un Chef de Cabinet</li>
+					<li>Une secrétaire</li>
+				</ul>
+				<p>Le Cabinet compte différentes cellules à savoir :</p>
+				<ul>
+					<li>La cellule communication</li>
+					<li>La cellule information interne et suivi des projets</li>
+				</ul>
+				<p style="background: blue; font-weight: bold; text-transform: uppercase; text-align: center; color: #fff;">Le Secrétariat Général</p>
+				<p>Il est dirigé par un Secrétaire Général et son assistante. Le Secrétaire Général est chargé de la coordination des activités de tous les services, d’assurer le Secrétariat de séance des réunions des organes (conseil Municipal, Municipalité…) la transmission des documents à la Tutelle (DGDDL). Il préside les réunions de directions. Il est placé sous l’autorité du Maire.</p>
+				<p>Les services directement rattachés au Secrétariat Général sont :</p>
+				<ul>
+					<li>Le Service du courrier</li>
+					<li>La police Municipale</li>
+					<li>Le service Informatique</li>
+					<li>L’Inspection des services</li>
+				</ul>
+				<p style="background: blue; font-weight: bold; text-transform: uppercase; text-align: center; color: #fff;">La Direction Technique</p>
+				<p>Le Service Technique est chargé de :</p>
+				<p>- Participer à l´élaboration du plan triennal de développement de la commune ;</p>
+				<p>- Procéder aux études techniques des projets de développement en collaboration avec toutes les structures techniques , les différents Ministères du Gouvernement et les Partenaires Privés.</p>
+				<p>- Préparer tous types de dossiers d’appel d’offres relatifs à l´acquisition de mobilier ou à la réalisation des travaux d’équipement, de rédiger les marchés en accord avec la Direction des Marchés Publics et de procéder aux appels d’offres.</p>
+				<p>- Gérer les opérations relatives à l´acquisition du patrimoine immobilier</p>
+				<p>- Exécuter en régie ou superviser tous les travaux d’équipement ou de réhabilitation</p>
+				<p>- Entretenir la voirie, les espaces verts, les espaces non bâtis, les parcs et jardins</p>
+				<p>- Procéder à l’entretien des marchés et des points de vente, de même qu´à l’enlèvement des ordures ménagères ou végétales et entreprendre toutes les opérations relevant de l’hygiène et de la salubrité publique</p>
+				<p>- Assurer au point de vue technique, les relations avec les sociétés qui ont la charge des services concédés (le courant, l’eau, le téléphone, les travaux de télécommunications, l´enlèvement des ordures ménagères, les pompe-funèbres, etc).</p>
+				<p>- Apporter l´appui technique, à toutes les opérations sur la commune (assainissement, tous types de construction, etc).</p>
+				<p>- Veiller à la bonne organisation des foires et expositions du point de vue des aspects techniques</p>
+				<p>- Veiller à la bonne organisation du transport urbain au sein de la commune</p>
+				<p style="background: blue; font-weight: bold; text-transform: uppercase; text-align: center; color: #fff;">La Direction de l’Etat Civil</p>
+				<p>Elle est chargée de la gestion de l’ensemble du personnel, des archives et de l’Etat Civil. Les principaux services placés sous l’autorité du Directeur sont :</p>
+				<ul>
+					<li>Le Services du personnel</li>
+					<li>Le Service de l’Etat Civil (naissance, mariage, décès, légalisation, certification).</li>
+					<li>Le service des archives</li>
+				</ul>
+				<p style="background: blue; font-weight: bold; text-transform: uppercase; text-align: center; color: #fff;">Direction des affaires sociales et culturelles</p>
+				<p>Cette direction a pour objectif principal l’animation citoyenne et la cohésion sociale à travers les activités de ses services sur le terrain.
+				</p>
+				<p>Ce service sert d’interface entre la Mairie, la population et les établissements scolaires de la commune et d’ailleurs. Il s’occupe des formations (Alphabétisation, formation qualifiantes) et la gestion des prises en charges scolaires auprès des établissements de formation.</p>
+				<p style="background: blue; font-weight: bold; text-transform: uppercase; text-align: center; color: #fff;">Direction Financière</p>
+				<p>Cette direction est chargée de gérer les ressources de la commune. Elle veille au recouvrement des impôts et des taxes, effectue l’exécution du budget de la commune de façon annuelle.</p>
+
+			</div>
+		</div>
+	</div>
+{% endblock %}

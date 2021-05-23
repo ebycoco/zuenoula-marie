@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	commune - Mairie de Zuenoula
+{% endblock %}
+{% block body %}
+	<ol class="breadcrumb mt-1">
+		<li class="breadcrumb-item">
+			<a href="{{path('app_home')}}">accueil</a>
+
+		</li>
+		<li class="breadcrumb-item">
+			<a href="{{path('commune_index')}}">La commune en bref</a>
+
+		</li>
+		<li class="breadcrumb-item">
+			<a href="{{path('Presentation_maire')}}">La mairie et son administration</a>
+		</li>
+		<li class="breadcrumb-item">
+<a href="{{path('commune_index')}}">Les différentes activités économique de la commune</a> 
+		</li>
+
+		<li class="breadcrumb-item active">La commune en image</li>
+	</ol>
+	{% include "parties/traitement.html.twig" %}
+{% endblock %}

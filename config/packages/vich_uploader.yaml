@@ -1,0 +1,72 @@
+vich_uploader:
+    db_driver: orm 
+    mappings:
+        grande_surface:
+            uri_prefix: /images/grande_surface
+            upload_destination: '%kernel.project_dir%/public/images/grande_surface'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        hotel_restaurant:
+            uri_prefix: /images/hotel_restaurant
+            upload_destination: '%kernel.project_dir%/public/images/hotel_restaurant'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        sport:
+            uri_prefix: /images/sport
+            upload_destination: '%kernel.project_dir%/public/images/sport'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+        
+        organe:
+            uri_prefix: /images/organe
+            upload_destination: '%kernel.project_dir%/public/images/organe'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+        
+        mot_maire:
+            uri_prefix: /images/mot_maire
+            upload_destination: '%kernel.project_dir%/public/images/mot_maire'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+        slider:
+            uri_prefix: /images/slider
+            upload_destination: '%kernel.project_dir%/public/images/slider'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true 
+        article:
+            uri_prefix: /images/article
+            upload_destination: '%kernel.project_dir%/public/images/article'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true 
+        coin:
+            uri_prefix: /images/coin
+            upload_destination: '%kernel.project_dir%/public/images/coin'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true 
+        maire:
+            uri_prefix: /images/maire
+            upload_destination: '%kernel.project_dir%/public/images/maire'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+       
+         

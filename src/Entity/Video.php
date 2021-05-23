@@ -2,14 +2,18 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\TimesTampable;
 use App\Repository\VideoRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=VideoRepository::class)
+ * @ORM\Table(name="Zuenoula_video") 
+ * @ORM\HasLifecycleCallbacks
  */
 class Video
 {
+    use TimesTampable;
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

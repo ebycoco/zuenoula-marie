@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	commune - Mairie de Zuenoula
+{% endblock %}
+{% block body %}
+	<ol class="breadcrumb mt-1">
+		<li class="breadcrumb-item">
+			<a href="{{path('app_home')}}">accueil</a>
+
+		</li>
+		<li class="breadcrumb-item active">La commune en bref</li>
+	</ol>
+	{% include "parties/traitement.html.twig" %}
+{% endblock %}
