@@ -14,52 +14,94 @@
 		<div class="col-12 text-center mt-5 ">
 			<h1 class="text-primary">Zuenoula news<hr>
 			</h1>
-			<!-- Three Column Section -->
-			<div class="container">
-				{% for row in articles|batch(3) %}
-					<div class="row mt-2">
-						{% for article in row %}
-							<div class="col-sm-6 col-md-4">
-								<div class="card">
-									<img src="{{asset('media/Articles/football.jpg')}}" class="card-img-top" alt="...">
-									<div class="card-body">
-										<h5 class="card-title">Card title</h5>
-										<h6 style="font-size:12px;">Publier :
-											<time class="timeago" datetime="04/06/2020">
-												04/06/2020</time>
-										</h6>
-										<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quis numquam iusto recusandae quas aliquam excepturi possimus illo quo eum vero, harum aperiam, quos, veniam repellendus similique corrupti nobis sequi!(...)&nbsp;</p>
-										<div style="text-align: center;">
-											<a style="color:#fff;text-align: center;" class="btn btn-warning" href="view_article_Index.php?id='.$item['id'].'">
-												<span class="glyphicon glyphicon-eye-open"></span>
-												Voir</a>
-										</div>
+		</div>
+		<!-- Three Column Section -->
+		<div class="col-12">
+			<p class="lead text-center mt-5">
+
+				Les dernière articles publier
+			</p>
+		</div>
+		<!-- Three Column Section -->
+		{% for row in articles|batch(3)  %}
+			<div class="row mt-2 mb-3" aiv="cls: aiv-slide-left; children: .card; delay: 200; delay_all: 500; repeat;">
+
+				{% for article in row %}
+					<div class="col-md-4 ">
+						<div class="card bg-white rounded shadow article">
+							<div class="mw-100 overflow-hidden">
+								<a href="{{ path('article_detail',{'slug': article.slug}) }}"><img src="{{ vich_uploader_asset(article, 'imageFile')|imagine_filter('article')}}" class="rounded mx-auto d-block w-100" alt="{{article.titre|u.truncate(20,'...',false) | raw}}"></a>
+
+
+							</div>
+							<div class="card-body">
+								<h5 class="card-title">{{article.titre|u.truncate(10,'...',false) | raw}}</h5>
+								<hr>
+								<div class="row">
+									<div class="col-lg-8">
+										<p>Publier :
+											<time class="timeago">{{article.publishedAt| ago(locale='fr')}}
+											</time>
+										</p>
 									</div>
 								</div>
-							</div>
-						{% endfor %}
-					</div>
-				{% else %}
-					<div class="col-sm-6 col-md-4">
-						<div class="card">
-							<img src="{{asset('media/Articles/football.jpg')}}" class="card-img-top" alt="...">
-							<div class="card-body">
-								<h5 class="card-title">Card title</h5>
-								<h6 style="font-size:12px;">Publier :
-									<time class="timeago" datetime="04/06/2020">
-										04/06/2020</time>
-								</h6>
-								<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quis numquam iusto recusandae quas aliquam excepturi possimus illo quo eum vero, harum aperiam, quos, veniam repellendus similique corrupti nobis sequi!(...)&nbsp;</p>
-								<div style="text-align: center;">
-									<a style="color:#fff;text-align: center;" class="btn btn-warning" href="view_article_Index.php?id='.$item['id'].'">
-										<span class="glyphicon glyphicon-eye-open"></span>
-										Voir</a>
+								<p class="text-justify">{{article.contenue|u.truncate(100,'...',false) | raw}}</p>
+
+								<p style="color: #ff5500;">
+									<i style="color: #838383;" class="fas fa-user-circle"></i>
+									Auteur:
+									{{ article.user.pseudo }}</p>
+								<div class="text-center">
+									<a href="{{ path('article_detail',{'slug': article.slug}) }}" class="btn btn-outline-warning btn-md">Suite...</a>
+
 								</div>
 							</div>
 						</div>
 					</div>
 				{% endfor %}
 			</div>
+		{% endfor %}
+
+		<div class="row text-center">
+			<div class="text-center">
+				{% do articles.setPageRange(3) %}
+				{{knp_pagination_render(articles,'base/pagination.html.twig')}}
+			</div>
 		</div>
-	</section>
-{% endblock %}
+	</div>
+</div></section><script type="text/javascript" src="../dist/aiv.min.js"></script><script type="text/javascript">
+;
+aiv.init()</script><script>
+const el = document.getElementById('event_test');
+el.addEventListener('aiv/in_view', function () {
+console.log('in_view')
+});
+el.addEventListener('aiv/out_of_view', function () {
+console.log('out_of_view')
+});</script><script>
+const counters = document.querySelectorAll('.counter');
+const speed = 200; // The lower the slower
+
+counters.forEach(counter => {
+const updateCount = () => {
+const target = + counter.getAttribute('data-target');
+const count = + counter.innerText;
+
+// Lower inc to slow and higher to slow
+const inc = target / speed;
+
+// console.log(inc);
+// console.log(count);
+
+// Check if target is reached
+if (count < target) { // Add inc to count and output in counter
+counter.innerText = count + inc;
+// Call function every ms
+setTimeout(updateCount, 1);
+} else {
+counter.innerText = target;
+}
+};
+
+updateCount();
+});</script>{% endblock %}

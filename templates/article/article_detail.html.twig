@@ -7,34 +7,32 @@
 	<div class="container mt-4">
 		<div class="row">
 			<div class="col-md-4">
-				<img src="{{ asset('media/Articles/football.jpg')}}" class="card-img-top">
+				<img src="{{ vich_uploader_asset(article, 'imageFile')}}" class="card-img-top" alt="{{article.titre|u.truncate(20,'...',false) | raw}}">
+
+
 			</div>
 			<div class="col-md-8">
 
 				<div class="row">
-					<div class="col-lg-8">
+					<div class="col-lg-12">
 						<p style="color: #ff5500;">
 							<i style="color: #838383;" class="fas fa-user-circle"></i>
-							La Rédaction:
-																																			ERIC</p>
-					</div>
-					<div class="col-lg-4">
-						<p class="text-center bg-success text-white text-lowercase" style="font-size:11px;border-radius:5px;">
-							Sport
-						</p>
+							La Rédaction:{{ article.user.pseudo }}</p>
+
 					</div>
 				</div>
 				<div class="row">
 					<div class="col">
-						<h1>Sport</h1>
+						<h1>{{article.titre| raw}}</h1>
+
 					</div>
 				</div>
 				<div class="row">
 					<div class="col">
-						<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio repellat debitis, in fuga quaerat iusto natus tempore accusantium, temporibus, accusamus ab voluptate itaque aliquam magnam atque non earum dignissimos similique.</p>
+						<p class="mb-4">{{article.contenue| raw}}</p>
+						<i class="fas fa-comments fa-2x text-primary mb-3" aria-hidden="true"></i>
 						3
-						<i class="text-primary fa fa-comment" aria-hidden="true"></i>
+
 					</div>
 
 				</div>

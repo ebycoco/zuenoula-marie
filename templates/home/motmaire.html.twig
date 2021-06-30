@@ -5,16 +5,20 @@
 	</h2>
 </div>
 <div style="color: #FFF; font-size:12px;text-align: justify;">
+	{% for motmaire in motmaires %}
+		<p>
+			{% if motmaire.imageName %}
+				<img class="img-responsive" src="{{ vich_uploader_asset(motmaire, 'imageFile')}}" alt="image de {{ motmaire.nom }}" style=" width:100px; border-width: 2px; border-style: solid;" aiv="cls: aiv-scale-up; repeat;delay: 500;"/>
+				{% else %}
+			{% endif %}
 
-	<p>
-		<img class="img-responsive" src="{{asset('media/maire/IMG-20191004-WA0001.jpg')}}" alt="" style=" width:100px; border-width: 2px; border-style: solid;" aiv="cls: aiv-scale-up; repeat;delay: 500;">
+
+			<span class="text-text-lowercase" style="text-align: justify; line-height: 1.6em;" aiv="cls: aiv-slide-left; repeat;">{{ motmaire.nom }}</span>
 
 
-		<span style="text-align: justify; line-height: 1.6em;" aiv="cls: aiv-slide-left; repeat;">DjE BI OLIVIER</span>
-
-
-	</p>
-	<p aiv="cls: aiv-slide-up; repeat;delay: 1000;">
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis iusto tempore, consequuntur placeat fugiat, debitis nisi aliquid quos inventore cum similique nihil reiciendis cumque nemo. Culpa dolore pariatur ipsa earum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Non officia officiis sit dolore accusantium itaque nostrum sapiente aperiam! Facere, consequuntur necessitatibus sequi a dignissimos tempore corporis asperiores perspiciatis maxime cupiditate?
-	</p>
+		</p>
+		<p aiv="cls: aiv-slide-up; repeat;delay: 1000;">
+			{{ motmaire.contenue|raw }}
+		</p>
+	{% endfor %}
 </div>

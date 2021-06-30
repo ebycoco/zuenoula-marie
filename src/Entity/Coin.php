@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CoinRepository::class)
+ * @Vich\Uploadable
  * @ORM\Table(name="Zuenoula_coins") 
  * @ORM\HasLifecycleCallbacks
  */

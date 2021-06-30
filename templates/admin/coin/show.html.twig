@@ -1,0 +1,35 @@
+{% extends 'AdminBase1.html.twig' %}
+
+
+{% block title %}Coin
+{% endblock %}
+
+{% block body %}
+	<h1>Coin</h1>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ coin.id }}</td>
+			</tr>
+			<tr>
+				<th>Titre</th>
+				<td>{{ coin.titre }}</td>
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td>{{ coin.description }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a href="{{ path('admin_coin_index') }}">back to list</a>
+
+
+	<a href="{{ path('admin_coin_edit', {'id': coin.id}) }}">edit</a>
+
+
+	{{ include('admin/coin/_delete_form.html.twig') }}
+
+{% endblock %}

@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Flash;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -12,9 +13,9 @@ class FlashType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('contenue')
-            ->add('user')
-        ;
+            ->add('contenue', CKEditorType::class, [
+                'config_name' => 'main_config',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

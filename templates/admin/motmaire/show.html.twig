@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Motmaire
+{% endblock %}
+
+{% block body %}
+	<h1>Motmaire</h1>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ motmaire.id }}</td>
+			</tr>
+			<tr>
+				<th>Nom</th>
+				<td>{{ motmaire.nom }}</td>
+			</tr>
+			<tr>
+				<th>Conenue</th>
+				<td>{{ motmaire.conenue }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a href="{{ path('admin_motmaire_index') }}">back to list</a>
+
+	<a href="{{ path('admin_motmaire_edit', {'id': motmaire.id}) }}">edit</a>
+
+	{{ include('admin/motmaire/_delete_form.html.twig') }}
+{% endblock %}

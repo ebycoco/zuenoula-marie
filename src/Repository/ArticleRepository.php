@@ -19,6 +19,33 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
+    public function findRecent($value)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.active = :val')
+            ->orderBy('a.publishedAt', 'DESC')
+            ->setMaxResults(1)
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult();
+    }
+    public function findValide($value)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.active = :val')
+            ->orderBy('a.publishedAt', 'DESC')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult();
+    }
+    public function findInValide($value)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.active = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult();
+    }
     // /**
     //  * @return Article[] Returns an array of Article objects
     //  */

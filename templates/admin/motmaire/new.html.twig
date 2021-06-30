@@ -1,0 +1,20 @@
+{% extends 'AdminBase1.html.twig' %}
+{% block title %}New Mot maire
+{% endblock %}
+
+{% block body %}
+	<!-- Begin Page Content -->
+	<div class="container-fluid">
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800">Nouvel Mot maire</h1>
+
+			<a href="{{ path('admin_motmaire_index') }}" class="btn btn-info">Retour</a>
+
+
+		</div>
+		{{ include('admin/motmaire/_form.html.twig') }}
+
+
+	</div>
+	<!-- /.container-fluid -->
+{% endblock %}

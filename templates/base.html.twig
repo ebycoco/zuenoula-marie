@@ -7,6 +7,9 @@
 			{% endblock %}
 		</title>
 		{% block stylesheets %}
+			<!-- Custom fonts for this template-->
+			<link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+
 			{{ encore_entry_link_tags('app') }}
 			<link rel="stylesheet" type="text/css" href="{{asset('dist/aiv-optional.css')}}">
 

@@ -6,6 +6,7 @@ use App\Entity\Coin;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class CoinType extends AbstractType
 {
@@ -14,8 +15,18 @@ class CoinType extends AbstractType
         $builder
             ->add('titre')
             ->add('description')
-            ->add('user')
-        ;
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
+                'allow_delete' => true,
+                'download_link' => false,
+                'image_uri' => false,
+                'label' => 'Image d\'article (JPG or PNG file)',
+                'attr' => [
+                    'class' => 'filestyle',
+                    'data-buttonname' => 'btn-secondary',
+                ]
+
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

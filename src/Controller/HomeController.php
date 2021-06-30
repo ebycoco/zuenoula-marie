@@ -12,6 +12,8 @@ use App\Repository\FlashRepository;
 use App\Repository\MotmaireRepository;
 use App\Repository\SliderRepository;
 use App\Repository\VideoRepository;
+use Knp\Component\Pager\PaginatorInterface;
+use phpDocumentor\Reflection\PseudoTypes\True_;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,14 +30,30 @@ class HomeController extends AbstractController
         MotmaireRepository $motmaireRepository,
         CoinRepository $coinRepository,
         FlashRepository $flashRepository,
-        VideoRepository $videoRepository
+        VideoRepository $videoRepository,
+        PaginatorInterface $paginator,
+        Request $request
     ): Response {
+        $articlesRece = $articleRepository->findRecent(True);
+        $data = $articleRepository->findValide(True);
+        $articles = $paginator->paginate($data, $request->query->getint('page', 1), 6);
+
+        $dataflash = $flashRepository->findBy([], ['publishedAt' => 'DESC']);
+        $flashes = $paginator->paginate($dataflash, $request->query->getint('page', 1), 1);
+
+        $datamotmaire = $motmaireRepository->findBy([], ['publishedAt' => 'DESC']);
+        $motmaires = $paginator->paginate($datamotmaire, $request->query->getint('page', 1), 1);
+
+        $datasliders = $sliderRepository->findBy([], ['publishedAt' => 'DESC']);
+        $sliders = $paginator->paginate($datasliders, $request->query->getint('page', 1), 4);
+
         return $this->render('home/index.html.twig', [
-            'articles' => $articleRepository->findAll(),
-            'sliders' => $sliderRepository->findAll(),
-            'motmaires' => $motmaireRepository->findAll(),
+            'articlesRece' => $articlesRece,
+            'articles' => $articles,
+            'sliders' => $sliders,
+            'motmaires' => $motmaires,
             'coins' => $coinRepository->findAll(),
-            'flashes' => $flashRepository->findAll(),
+            'flashes' => $flashes,
             'videos' => $videoRepository->findAll(),
         ]);
     }
