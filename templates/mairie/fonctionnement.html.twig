@@ -32,57 +32,20 @@
 					<h4 align="center" style="text-transform: uppercase; font-weight: bold;">les organes de fonctionnement</h4>
 					<hr>
 					<p style="font-weight: bold; color: blue;">Il s’agit ici de voir comment fonctionnent ces organes.</p>
-					<p style="background: blue; font-weight: bold; text-transform: uppercase; text-align: center; color: #fff;">Le Conseil Municipal</p>
+					{% for organeDeFonctionnement in organeDeFonctionnements %}
+						<p style="background: blue; font-weight: bold; text-transform: uppercase; text-align: center; color: #fff;">{{organeDeFonctionnement.titre}}</p>
+						{% if organeDeFonctionnement.imageName %}
 
-					<div class="row">
-						<div>
-							<ul>
-								<li style="text-align: justify;">D’un Conseil Municipal composé de trente un (31) Conseillers Municipaux, répartis dans huit (2) commissions Permanentes ;</li>
-								<li>D’une Municipalité (le Maire + 04 Adjoints) de sept membres ;</li>
-								<li>et du Maire en tant qu’organe exécutif de la Commune, chargé de son Administration.</li>
-							</ul>
-							<p>
-								Les organes actuels de la Commune de Zuenoula ont été mis en place en Janvier 2019, après les élections municipales du 13 Octobre 2018 à l’issue desquelles la liste conduite par le Maire DJE BI DJE Olivier Vamy a été vainqueur.
-							</p>
-						</div>
-					</div>
+							<div align="center">
+								<img class="img-responsive" src="{{asset('media/slider3/slider_h3.png')}}" width="100%" alt="" srcset="">
+							</div>
+							{% else %}
 
-					<p style="background: blue; font-weight: bold; text-transform: uppercase; text-align: center; color: #fff;">La Municipalité</p>
-					<div align="center">
-						<img class="img-responsive" src="{{asset('media/slider3/slider_h3.png')}}" width="100%" alt="" srcset="">
-					</div>
+						{% endif %}
+						{{organeDeFonctionnement.contenue|raw}}
 
-					<p style="font-weight: bold;">La municipalité est chargée de :</p>
-					<ol>
-						<li>
-							L’établissement de l’ordre du jour des séances du conseil. (La coordination des actions de développement, plus particulièrement de celles  
-																																															     relatives à la participation des populations.)
-						</li>
-						<li>
-							De la surveillance de la rentrée des impôts, taxes et droits municipaux;
-						</li>
-						<li>
-							De la détermination du mode d’exécution des travaux communaux. La municipalité est composée du Maire et de ses six (04) adjoints.
+					{% endfor %}
 
-						</li>
-					</ol>
-					<p style="text-align: justify; margin-top: 15px;">
-						<span style="font-weight: bold;">Attributions du Maire :</span>
-						Sous le contrôle du conseil municipal et la surveillance de l’autorité de tutelle, le Maire est chargé d’une manière générale d’exécuter les délibérations du conseil municipal. Le Maire est chargé de l’administration de la commune. Il représente la commune dans les conseils, commissions et organismes dans lesquels sa représentation est prévue par les lois et règlements en vigueur. Le Maire est représentant de l’état dans la commune. Il est officier de l’état civil, en sa qualité d’agent de l’état. Le Maire pourvoit à l’inhumation décente de toute personne décédée sans distinction d’origine, de race, de sexe ou de religion. Le Maire sous le contrôle de l’autorité compétente, est responsable du maintien de l’ordre, de la sûreté, de la tranquillité, de la sécurité et de la salubrité publique. Le Maire a la police des routes à l’intérieur du périmètre communal dans la limite des règlements en matière de circulation routière.</p>
-
-					<p style="font-weight: bold; text-transform: uppercase;">Les différents adjoints au maire</p>
-					1er Adjoint au Maire :
-					<span style="font-weight: bold;">DJE BI KAHOU Albert</span>
-					(Enseignant chercheur)<br>
-					2ème Adjoint au Maire :
-					<span style="font-weight: bold;">Sanfo Oumar</span>
-					<br>
-					3ème Adjoint au Maire :
-					<span style="font-weight: bold;">KOUAKOU Denis</span>
-					<br>
-					4ème Adjoint au Maire :
-					<span style="font-weight: bold;">ADIKO BI GOURE Oscar</span>
-					<br><br>
 				</div>
 			</div>
 		</div>

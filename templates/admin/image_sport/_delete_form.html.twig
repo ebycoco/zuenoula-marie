@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('admin_image_sport_delete', {'id': image_sport.id}) }}" onsubmit="return confirm('Etre vous sûr de vouloir image sport numéro {{ image_sport.id }} ?');">
+	<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ image_sport.id) }}">
+	<button class="btn">Delete</button>
+</form>

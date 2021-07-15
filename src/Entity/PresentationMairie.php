@@ -26,16 +26,17 @@ class PresentationMairie
      */
     private $contenue;
 
+
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="predentationMairies")
+     * @ORM\Column(type="boolean")
+     */
+    private $active;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="presentationMairies")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $titre;
 
     public function getId(): ?int
     {
@@ -53,6 +54,17 @@ class PresentationMairie
 
         return $this;
     }
+    public function getActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): self
+    {
+        $this->active = $active;
+
+        return $this;
+    }
 
     public function getUser(): ?User
     {
@@ -62,18 +74,6 @@ class PresentationMairie
     public function setUser(?User $user): self
     {
         $this->user = $user;
-
-        return $this;
-    }
-
-    public function getTitre(): ?string
-    {
-        return $this->titre;
-    }
-
-    public function setTitre(string $titre): self
-    {
-        $this->titre = $titre;
 
         return $this;
     }

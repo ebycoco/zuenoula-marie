@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OrganeDeFonctionnement{% endblock %}
+
+{% block body %}
+    <h1>OrganeDeFonctionnement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ organe_de_fonctionnement.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ organe_de_fonctionnement.titre }}</td>
+            </tr>
+            <tr>
+                <th>Contenue</th>
+                <td>{{ organe_de_fonctionnement.contenue }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ organe_de_fonctionnement.imageName }}</td>
+            </tr>
+            <tr>
+                <th>PublishedAt</th>
+                <td>{{ organe_de_fonctionnement.publishedAt ? organe_de_fonctionnement.publishedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ organe_de_fonctionnement.updatedAt ? organe_de_fonctionnement.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('organe_de_fonctionnement_index') }}">back to list</a>
+
+    <a href="{{ path('organe_de_fonctionnement_edit', {'id': organe_de_fonctionnement.id}) }}">edit</a>
+
+    {{ include('organe_de_fonctionnement/_delete_form.html.twig') }}
+{% endblock %}

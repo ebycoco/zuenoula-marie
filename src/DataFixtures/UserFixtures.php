@@ -167,7 +167,6 @@ class UserFixtures extends Fixture
 
         for ($p = 1; $p <= 6; $p++) {
             $presentationMairy = new PresentationMairie();
-            $presentationMairy->setTitre($faker->sentence());
             $presentationMairy->setContenue($faker->text());
             $presentationMairy->setUser($user);
             $manager->persist($presentationMairy);

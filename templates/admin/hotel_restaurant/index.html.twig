@@ -1,0 +1,141 @@
+{% extends 'AdminBase1.html.twig' %}
+
+{% block title %}hotel ou restaurant index
+{% endblock %}
+{% block stylesheets %}<link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+{% endblock %}
+
+
+{% block body %}
+
+	<div class="container-fluid">
+		{% include 'admin/adminbase/notification.html.twig'%}
+
+		<!-- Page Heading -->
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800">Dashboard d'hotel ou restaurant</h1>
+			<a href="{{ path('admin_hotel_restaurant_new') }}" class="btn btn-primary btn-icon-split">
+				<span class="icon text-white-50">
+					<i class="fas fa-plus"></i>
+				</span>
+				<span class="text">Nouvel hotel ou restaurant</span>
+			</a>
+		</div>
+		<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">Liste des hotels ou restaurants</h6>
+			</div>
+			<div class="card shadow mb-4">
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered" id="" width="100%" cellspacing="0">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Titre</th>
+									<th>Image</th>
+									<th>Créer le</th>
+									<th>actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for hotel_restaurant in hotel_restaurants %}
+									<tr>
+										<td>{{ hotel_restaurant.id }}</td>
+										<td>{{ hotel_restaurant.titre }}</td>
+										<td>
+											{% if hotel_restaurant.imageName %}
+												<img src="{{ vich_uploader_asset(hotel_restaurant, 'imageFile')|imagine_filter('article_admin')}}" alt="image de {{ hotel_restaurant.titre }}"/>
+											{% else %}
+												<img src="{{asset('assets/images/users/user-4.jpg')}}" width="100" height="15" alt="{{ hotel_restaurant.titre}}"/>
+											{% endif %}
+										</td>
+										<td>{{ hotel_restaurant.publishedAt ? hotel_restaurant.publishedAt|date('m-d-Y H:i:s') : '' }}</td>
+										<td>
+											<div class="row">
+												<div class="col-md-3">
+													<a href="" class="btn btn-warning btn-icon-split" data-toggle="modal" data-target="#modal{{ hotel_restaurant.id }}" type="button">
+														<span class="icon text-white-50">
+															<i class="fas fa-eye"></i>
+														</span>
+														<span class="text">Voir</span>
+													</a>
+												</div>
+												<div class="col-md-1"></div>
+												<div class="col-md-4">
+													<a href="{{ path('admin_hotel_restaurant_edit', {'id': hotel_restaurant.id}) }}" class="btn btn-primary btn-icon-split">
+
+														<span class="icon text-white-50">
+															<i class="fas fa-pen" aria-hidden="true"></i>
+														</span>
+														<span class="text">Modifier</span>
+													</a>
+												</div>
+												<div class="col-md-1"></div>
+												<div class="col-md-3">
+													<form method="post" action="{{ path('admin_hotel_restaurant_delete', {'id': hotel_restaurant.id}) }}" onsubmit="return confirm('Etre vous sûr de vouloir supprimer le hotel restaurant numéro {{ hotel_restaurant.id }} ?');">
+														<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ hotel_restaurant.id) }}">
+														<button class="btn btn-danger btn-icon-split">
+															<span class="icon text-white-50">
+																<i class="fas fa-trash"></i>
+															</span>
+														</button>
+													</form>
+												</div>
+											</div>
+
+											<div class="modal fade" id="modal{{ hotel_restaurant.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title mt-0">
+																{{ hotel_restaurant.titre }}</h5>
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<div class="modal-body">
+															<div class="card profil">
+																<div class="card-body">
+																	{% if hotel_restaurant.imageName %}
+																		<img src="{{ vich_uploader_asset(hotel_restaurant, 'imageFile')|imagine_filter('article_admin')}}" alt="image de {{ hotel_restaurant.titre }}"/>
+																	{% else %}
+																		<img src="{{asset('assets/images/users/user-4.jpg')}}" width="100" height="15" alt="{{ hotel_restaurant.titre}}"/>
+
+																	{% endif %}
+																	{{ hotel_restaurant.description }}
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- /.modal-content -->
+												</div>
+												<!-- /.modal-dialog -->
+											</div>
+										</td>
+
+									</tr>
+								{% else %}
+									<tr>
+										<td colspan="5">no records found</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+						<div class="col-md-6 offset-md-3">
+							{% do hotel_restaurants.setPageRange(3) %}
+							{{knp_pagination_render(hotel_restaurants,'base/pagination.html.twig')}}
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+{% endblock %}

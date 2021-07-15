@@ -32,98 +32,30 @@
 		</div>
 	</div>
 	<div class="container">
-		<div class="row">
-			<div class=" col-md-4">
-				<div class="thumbnail">
-					<img class="img-responsive" src="{{asset('media/hotel3.jpg')}}" width="100%" alt="...">
-					<div style="text-align:center;" class="caption">
-						<h3>Hotel faya</h3>
-						<p>La cour de faya
-						</p>
-						<p>
-							<a href="#" class="btn btn-info" role="button">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								Voir</a>
-						</p>
+		{% for row in hotel_restaurants|batch(3)  %}
+
+			<div class="row mt-2" aiv="cls: aiv-slide-left; children: .card; delay: 200; delay_all: 500; repeat;">
+				{% for hotel_restaurant in row %}
+					<div class="col-md-4">
+						<div class=" card thumbnail bg-white rounded shadow article">
+							<div class=" mw-100 overflow-hidden">
+								<img class="img-responsive" src=" {{ vich_uploader_asset(hotel_restaurant, 'imageFile')|imagine_filter('sport')}}" class="rounded mx-auto d-block w-100" alt="{{hotel_restaurant.id}}">
+							</div>
+							<div style="text-align:center;" class="caption">
+								<h3>{{hotel_restaurant.titre}}</h3>
+								{{hotel_restaurant.description}}
+								<p>
+									<a href="#" class="btn btn-info" role="button">
+										<span class="glyphicon glyphicon-eye-open"></span>
+										Voir</a>
+								</p>
+							</div>
+
+						</div>
 					</div>
-				</div>
+				{% endfor %}
 			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<img class="img-responsive" src="{{asset('media/hotel2.jpg')}}" width="100%" alt="...">
-					<div style="text-align:center;" class="caption">
-						<h3>Hotel faya</h3>
-						<p>Le grand restaurant de Zuenoula</p>
-						<p>
-							<a href="#" class="btn btn-info" role="button">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								Voir</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class=" col-md-4">
-				<div class="thumbnail">
-					<img class="img-responsive" src="{{asset('media/commisarat.jpg')}}" width="100%" alt="...">
-					<div style="text-align:center;" class="caption">
-						<h3>
-							Complexe Hotelier Au Commencement</h3>
-						<p>
-							<a href="#" class="btn btn-info" role="button">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								Voir</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class=" col-md-4">
-				<div class="thumbnail">
-					<img class="img-responsive" src="{{asset('media/h1.jpg')}}" width="100%" alt="...">
-					<div style="text-align:center;" class="caption">
-						<h3>Complexe Hotelier Au Commencement</h3>
-						<p>restauration du Complexe Hotelier
-						</p>
-						<p>
-							<a href="#" class="btn btn-info" role="button">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								Voir</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class=" col-md-4">
-				<div class="thumbnail">
-					<img class="img-responsive" src="{{asset('media/h2.jpg')}}" width="100%" alt="...">
-					<div style="text-align:center;" class="caption">
-						<h3>Complexe Hotelier Au Commencement</h3>
-						<p>restauration du Complexe Hotelier
-						</p>
-						<p>
-							<a href="#" class="btn btn-info" role="button">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								Voir</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class=" col-md-4">
-				<div class="thumbnail">
-					<img class="img-responsive" src="{{asset('media/hotel.jpg')}}" width="100%" alt="...">
-					<div style="text-align:center;" class="caption">
-						<h3>Hotel faya</h3>
-						<p>La chambre de faya
-						</p>
-						<p>
-							<a href="#" class="btn btn-info" role="button">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								Voir</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
+		{% endfor %}
 	</div>
 	<div class="container">
 		<div class="titre_actu">
@@ -192,4 +124,47 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="../dist/aiv.min.js"></script>
+	<script type="text/javascript">
+		;
+aiv.init()
+	</script>
+	<script>
+		const el = document.getElementById('event_test');
+el.addEventListener('aiv/in_view', function () {
+console.log('in_view')
+});
+el.addEventListener('aiv/out_of_view', function () {
+console.log('out_of_view')
+});
+	</script>
+	<script>
+		const counters = document.querySelectorAll('.counter');
+const speed = 200; // The lower the slower
+
+counters.forEach(counter => {
+const updateCount = () => {
+const target = + counter.getAttribute('data-target');
+const count = + counter.innerText;
+
+// Lower inc to slow and higher to slow
+const inc = target / speed;
+
+// console.log(inc);
+// console.log(count);
+
+// Check if target is reached
+if (count < target) { // Add inc to count and output in counter
+counter.innerText = count + inc;
+// Call function every ms
+setTimeout(updateCount, 1);
+} else {
+counter.innerText = target;
+}
+};
+
+updateCount();
+});
+	</script>
+
 {% endblock %}

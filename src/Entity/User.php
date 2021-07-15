@@ -148,10 +148,6 @@ class User implements UserInterface, Serializable
      */
     private $maires;
 
-    /**
-     * @ORM\OneToMany(targetEntity=PresentationMairie::class, mappedBy="user", orphanRemoval=true)
-     */
-    private $presentationMairies;
 
     /**
      * @ORM\OneToMany(targetEntity=OrganeDeFonctionnement::class, mappedBy="user", orphanRemoval=true)
@@ -226,6 +222,16 @@ class User implements UserInterface, Serializable
      */
     private $modif = false;
 
+    /**
+     * @ORM\OneToMany(targetEntity=PresentationMairie::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $presentationMairies;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Municipalite::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $municipalites;
+
     public function __construct()
     {
         $this->services = new ArrayCollection();
@@ -236,7 +242,6 @@ class User implements UserInterface, Serializable
         $this->motmaires = new ArrayCollection();
         $this->sliders = new ArrayCollection();
         $this->maires = new ArrayCollection();
-        $this->presentationMairies = new ArrayCollection();
         $this->organeDeFonctionnements = new ArrayCollection();
         $this->administrationDeMunicipalites = new ArrayCollection();
         $this->fonctionnementMunicipales = new ArrayCollection();
@@ -244,6 +249,8 @@ class User implements UserInterface, Serializable
         $this->imageSports = new ArrayCollection();
         $this->hotelRestaurants = new ArrayCollection();
         $this->grandeSurfaces = new ArrayCollection();
+        $this->presentationMairies = new ArrayCollection();
+        $this->municipalites = new ArrayCollection();
     }
 
     public function __toString()
@@ -704,35 +711,7 @@ class User implements UserInterface, Serializable
         return $this;
     }
 
-    /**
-     * @return Collection|PresentationMairie[]
-     */
-    public function getPresentationMairies(): Collection
-    {
-        return $this->presentationMairies;
-    }
 
-    public function addPresentationMairy(PresentationMairie $presentationMairy): self
-    {
-        if (!$this->presentationMairies->contains($presentationMairy)) {
-            $this->presentationMairies[] = $presentationMairy;
-            $presentationMairy->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removePresentationMairy(PresentationMairie $presentationMairy): self
-    {
-        if ($this->presentationMairies->removeElement($presentationMairy)) {
-            // set the owning side to null (unless already changed)
-            if ($presentationMairy->getUser() === $this) {
-                $presentationMairy->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection|OrganeDeFonctionnement[]
@@ -1043,6 +1022,66 @@ class User implements UserInterface, Serializable
     public function setModif(bool $modif): self
     {
         $this->modif = $modif;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PresentationMairie[]
+     */
+    public function getPresentationMairies(): Collection
+    {
+        return $this->presentationMairies;
+    }
+
+    public function addPresentationMairy(PresentationMairie $presentationMairy): self
+    {
+        if (!$this->presentationMairies->contains($presentationMairy)) {
+            $this->presentationMairies[] = $presentationMairy;
+            $presentationMairy->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePresentationMairy(PresentationMairie $presentationMairy): self
+    {
+        if ($this->presentationMairies->removeElement($presentationMairy)) {
+            // set the owning side to null (unless already changed)
+            if ($presentationMairy->getUser() === $this) {
+                $presentationMairy->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Municipalite[]
+     */
+    public function getMunicipalites(): Collection
+    {
+        return $this->municipalites;
+    }
+
+    public function addMunicipalite(Municipalite $municipalite): self
+    {
+        if (!$this->municipalites->contains($municipalite)) {
+            $this->municipalites[] = $municipalite;
+            $municipalite->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMunicipalite(Municipalite $municipalite): self
+    {
+        if ($this->municipalites->removeElement($municipalite)) {
+            // set the owning side to null (unless already changed)
+            if ($municipalite->getUser() === $this) {
+                $municipalite->setUser(null);
+            }
+        }
 
         return $this;
     }

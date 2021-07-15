@@ -1,0 +1,167 @@
+{% extends 'AdminBase1.html.twig' %}
+
+{% block title %}La Presentation Mairie
+
+{% endblock %}
+{% block stylesheets %}<link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+
+	<div class="container-fluid">
+		{% include 'admin/adminbase/notification.html.twig'%}
+
+		<!-- Page Heading -->
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800">Dashboard de la Presentation de la Mairie</h1>
+			<a href="{{ path('admin_presentation_mairie_new') }}" class="btn btn-primary btn-icon-split">
+				<span class="icon text-white-50">
+					<i class="fas fa-plus"></i>
+				</span>
+				<span class="text">Nouvel Presentation de la Mairie</span>
+
+
+			</a>
+		</div>
+		<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">Liste des Presentations de la Mairie</h6>
+			</div>
+			<div class="card shadow mb-4">
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered" id="" width="100%" cellspacing="0">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Contenue</th>
+									<th>Active</th>
+									<th>publié le</th>
+									<th>actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for presentation_mairie in presentation_mairies %}
+									<tr>
+										<td>{{ presentation_mairie.id }}</td>
+										<td>{{presentation_mairie.contenue|u.truncate(10,'...',false) | raw}}</td>
+
+
+										<td>
+											<input type="checkbox" id="switch{{ presentation_mairie.id}}" switch="bool" {% if presentation_mairie.active %} checked {% endif %} data-id=" {{ presentation_mairie.id}} "/>
+
+											<label for="switch{{ presentation_mairie.id}}" data-on-label="Yes" data-off-label="No"></label>
+
+
+										</td>
+										<td>{{ presentation_mairie.publishedAt| ago(locale='fr')}}</td>
+
+
+										<td>
+											<div class="row">
+												<div class="col-md-3">
+													<a href="" class="btn btn-warning btn-icon-split" data-toggle="modal" data-target="#modal{{ presentation_mairie.id }}" type="button">
+														<span class="icon text-white-50">
+															<i class="fas fa-eye"></i>
+														</span>
+														<span class="text">Voir</span>
+													</a>
+												</div>
+												<div class="col-md-1"></div>
+												<div class="col-md-4">
+													<a href="{{ path('admin_presentation_mairie_edit', {'id': presentation_mairie.id}) }}" class="btn btn-primary btn-icon-split">
+
+														<span class="icon text-white-50">
+															<i class="fas fa-pen" aria-hidden="true"></i>
+														</span>
+														<span class="text">Modifier</span>
+													</a>
+												</div>
+												<div class="col-md-1"></div>
+												<div class="col-md-3">
+													<form method="post" action="{{ path('admin_presentation_mairie_delete', {'id': presentation_mairie.id}) }}" onsubmit="return confirm('Etre vous sûr de vouloir supprimer le presentation_mairie numéro {{ presentation_mairie.id }} ?');">
+														<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ presentation_mairie.id) }}">
+														<button class="btn btn-danger btn-icon-split">
+															<span class="icon text-white-50">
+																<i class="fas fa-trash"></i>
+															</span>
+														</button>
+													</form>
+												</div>
+											</div>
+
+											<div class="modal fade" id="modal{{ presentation_mairie.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title mt-0">
+																Presentation numéro
+																{{ presentation_mairie.id }}</h5>
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<div class="modal-body">
+															<div class="card profil">
+																<div class="card-body">
+																	{{ presentation_mairie.contenue|raw }}
+
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- /.modal-content -->
+												</div>
+												<!-- /.modal-dialog -->
+											</div>
+										</td>
+
+									</tr>
+								{% else %}
+									<tr>
+										<td colspan="5">Pas de maire</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+						<div class="col-md-6 offset-md-3">
+							{% do presentation_mairies.setPageRange(3) %}
+
+							{{knp_pagination_render(presentation_mairies,'base/pagination.html.twig')}}
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+{% endblock %}
+{% block javascripts %}
+	<!-- Page level plugins -->
+	<script src="{{asset('vendor/datatables/jquery.dataTables.min.js')}}"></script>
+	<script src="{{asset('vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+
+	<!-- Page level custom scripts -->
+	<script src="{{asset('js/demo/datatables-demo.js')}}"></script>
+
+	<script>
+		window.onload = () => {
+let activer = document.querySelectorAll("[type=checkbox]")
+for (let boutton of activer) {
+boutton.addEventListener("click", function () {
+let xmlhttp = new XMLHttpRequest;
+xmlhttp.open("GET", `/admin/presentation-mairie/activation/${
+
+this.dataset.id
+}`)
+xmlhttp.send()
+})
+}
+}
+	</script>
+{% endblock %}

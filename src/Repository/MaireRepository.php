@@ -18,7 +18,16 @@ class MaireRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Maire::class);
     }
-
+    public function findRecent($value)
+    {
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.isActive = :val')
+            ->orderBy('m.publishedAt', 'DESC')
+            ->setMaxResults(1)
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult();
+    }
     // /**
     //  * @return Maire[] Returns an array of Maire objects
     //  */

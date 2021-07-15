@@ -1,0 +1,152 @@
+{% extends 'AdminBase1.html.twig' %}
+
+{% block title %}Maire index
+
+{% endblock %}
+{% block stylesheets %}<link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+
+	<div class="container-fluid">
+		{% include 'admin/adminbase/notification.html.twig'%}
+
+		<!-- Page Heading -->
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800">Dashboard Maire</h1>
+
+			<a href="{{ path('admin_maire_new') }}" class="btn btn-primary btn-icon-split">
+				<span class="icon text-white-50">
+					<i class="fas fa-plus"></i>
+				</span>
+				<span class="text">Nouvel Maire</span>
+
+			</a>
+		</div>
+		<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">Liste des Maire</h6>
+
+			</div>
+			<div class="card shadow mb-4">
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered" id="" width="100%" cellspacing="0">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Image</th>
+									<th>NomPrenom</th>
+									<th>Active</th>
+									<th>actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for maire in maires %}
+
+									<tr>
+										<td>{{ maire.id }}</td>
+										<td>
+											{% if maire.imageName %}
+												<img src="{{ vich_uploader_asset(maire, 'imageFile')|imagine_filter('article_admin')}}" alt="image de {{ maire.nomPrenom }}"/>
+											{% else %}
+												<img src="{{asset('assets/images/users/user-4.jpg')}}" width="100" height="15" alt="{{ maire.nomPrenom}}"/>
+
+											{% endif %}
+										</td>
+										<td>{{ maire.nomPrenom }}</td>
+										<td>{{ maire.isActive ? 'Yes' : 'No' }}</td>
+										<td>
+											<div class="row">
+												<div class="col-md-4">
+													<a href="" class="btn btn-warning btn-icon-split" data-toggle="modal" data-target="#modal{{ maire.id }}" type="button">
+														<span class="icon text-white-50">
+															<i class="fas fa-eye"></i>
+														</span>
+														<span class="text">Voir</span>
+													</a>
+												</div>
+												<div class="col-md-4">
+													<a href="{{ path('admin_maire_edit', {'id': maire.id}) }}" class="btn btn-primary btn-icon-split">
+
+														<span class="icon text-white-50">
+															<i class="fas fa-pen" aria-hidden="true"></i>
+														</span>
+														<span class="text">Modifier</span>
+													</a>
+												</div>
+												<div class="col-md-4">
+													<form method="post" action="{{ path('admin_maire_delete', {'id': maire.id}) }}" onsubmit="return confirm('Etre vous sûr de vouloir supprimer le maire numéro {{ maire.id }} ?');">
+														<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ maire.id) }}">
+														<button class="btn btn-danger btn-icon-split">
+															<span class="icon text-white-50">
+																<i class="fas fa-trash"></i>
+															</span>
+															<span class="text">Supprimer</span>
+														</button>
+													</form>
+												</div>
+											</div>
+
+											<div class="modal fade" id="modal{{ maire.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title mt-0">
+																Nom et prenom du Maire:
+																{{ maire.nomPrenom }}</h5>
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<div class="modal-body">
+															<div class="card profil">
+																<div class="card-body">
+																	{% if maire.imageName %}
+																		<img src="{{ vich_uploader_asset(maire, 'imageFile')|imagine_filter('article_admin')}}" alt="image de {{ maire.nomPrenom }}"/>
+																	{% else %}
+																		<img src="{{asset('assets/images/users/user-4.jpg')}}" width="100" height="15" alt="{{ maire.nomPrenom}}"/>
+
+																	{% endif %}
+
+																	<p>Proffesion:
+																		{{ maire.proffesion }}</p>
+																	<p>Début de ses fonction:
+																		{{ maire.debutFonction ? maire.debutFonction|date('Y-m-d') : '' }}</p>
+																	<p>Fin de ses fonctions:
+																		{{ maire.finFonction ? maire.finFonction|date('Y-m-d') : '' }}</p>
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- /.modal-content -->
+												</div>
+												<!-- /.modal-dialog -->
+											</div>
+										</td>
+
+									</tr>
+								{% else %}
+									<tr>
+										<td colspan="6">Pas de maire</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+						<div class="col-md-6 offset-md-3">
+							{% do maires.setPageRange(3) %}
+
+							{{knp_pagination_render(maires,'base/pagination.html.twig')}}
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+{% endblock %}

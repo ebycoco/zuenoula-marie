@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HotelRestaurant{% endblock %}
+
+{% block body %}
+    <h1>HotelRestaurant</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ hotel_restaurant.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ hotel_restaurant.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ hotel_restaurant.description }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ hotel_restaurant.imageName }}</td>
+            </tr>
+            <tr>
+                <th>PublishedAt</th>
+                <td>{{ hotel_restaurant.publishedAt ? hotel_restaurant.publishedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ hotel_restaurant.updatedAt ? hotel_restaurant.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('hotel_restaurant_index') }}">back to list</a>
+
+    <a href="{{ path('hotel_restaurant_edit', {'id': hotel_restaurant.id}) }}">edit</a>
+
+    {{ include('hotel_restaurant/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'AdminBase1.html.twig' %}
+{% block title %}Nouvel Presentation de la Mairie
+{% endblock %}
+{% block body %}
+	<!-- Begin Page Content -->
+	<div class="container-fluid">
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800">Nouvel Presentation de la Mairie</h1>
+
+			<a href="{{ path('admin_presentation_mairie_index') }}" class="btn btn-info">Retour</a>
+		</div>
+		{{ include('admin/presentation_mairie/_form.html.twig') }}
+	</div>
+	<!-- /.container-fluid -->
+{% endblock %}

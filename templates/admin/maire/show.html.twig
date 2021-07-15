@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Maire{% endblock %}
+
+{% block body %}
+    <h1>Maire</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ maire.id }}</td>
+            </tr>
+            <tr>
+                <th>NomPrenom</th>
+                <td>{{ maire.nomPrenom }}</td>
+            </tr>
+            <tr>
+                <th>Proffesion</th>
+                <td>{{ maire.proffesion }}</td>
+            </tr>
+            <tr>
+                <th>DebutFonction</th>
+                <td>{{ maire.debutFonction ? maire.debutFonction|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>FinFonction</th>
+                <td>{{ maire.finFonction ? maire.finFonction|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>IsActive</th>
+                <td>{{ maire.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ maire.imageName }}</td>
+            </tr>
+            <tr>
+                <th>PublishedAt</th>
+                <td>{{ maire.publishedAt ? maire.publishedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ maire.updatedAt ? maire.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('maire_index') }}">back to list</a>
+
+    <a href="{{ path('maire_edit', {'id': maire.id}) }}">edit</a>
+
+    {{ include('maire/_delete_form.html.twig') }}
+{% endblock %}

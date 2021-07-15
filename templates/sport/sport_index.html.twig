@@ -19,47 +19,73 @@
 		</li>
 		<li class="breadcrumb-item active">LE SPORT DANS LA COMMUNE</li>
 	</ol>
-	<div class="container">
-		<div class="titre_actu">
-			<h1>
-				LE SPORT DANS LA COMMUNE</h1>
-		</div>
-	</div>
-	<div class="container">
-		<p>En terme de sport, la commune est animée par les activités de la Mairie, les activités des clubs et  celles des associations des jeunes dans les quartiers.</p>
-		<p>Chaque année, la Marie organise le tournoi de la municipalité à l’occasion de la fête de l’indépendance, le lancement et la clôture des activités des vacances et veille sur les activités des clubs et associations dans les quartiers comme le jeu de pétanque et de scrabble.</p>
-		<p>Les associations dans les quartiers sont très actives surtout pendant les vacances et les congés.</p>
-		<p>Les clubs sont en permanence en activité soit les séances d’entrainement, les répétitions ou les compétitions ou des trophées remportés sont présenter à la municipalité.</p>
-		<p>Les sports se pratiquent au complexe sportif de la commune en pleine dégradation, sur les espaces libres des quartiers et les entrainements se font dans les établissements scolaires après les cours.
-		</p>
-		<ul>
-			<li>Le Football</li>
-			<li>Le cyclisme</li>
-			<li>moto-cross</li>
-			<li>basketball</li>
-		</ul>
-		<p>NOUS VOUS PRENSENTONS QUELQUES PHOTOS POUR ILLUSTRER LE TEXTE</p>
-		<div class="row">
-			<div class="col-md-4 thumbnail">
-				<img class="img-responsive" src=" {{asset('media/sport/02.jpeg')}}" width="100%" alt="" srcset="">
-			</div>
-			<div class="col-md-4 thumbnail">
-				<img class="img-responsive" src="{{asset('media/sport/03.jpeg')}}" width="100%" alt="" srcset="">
-			</div>
-			<div class="col-md-4 thumbnail">
-				<img class="img-responsive" src="{{asset('media/sport/04.jpeg')}}" width="100%" alt="" srcset="">
+	<section id="activite" class="container-fluid reveal">
+
+		<div class="container">
+			<div class="titre_actu">
+				<h1>
+					LE SPORT DANS LA COMMUNE</h1>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-4 thumbnail">
-				<img class="img-responsive" src="{{asset('media/sport/05.jpg')}}" width="100%" alt="" srcset="">
-			</div>
-			<div class="col-md-4 thumbnail">
-				<img class="img-responsive" src="{{asset('media/sport/01.jpg')}}" width="100%" alt="" srcset="">
-			</div>
-			<div class="col-md-4 thumbnail">
-				<img class="img-responsive" src="{{asset('media/sport/04.jpeg')}}" width="100%" alt="" srcset="">
-			</div>
+		<div class="container">
+			{% for sport in sports %}
+				{{sport.contenue|raw}}
+			{% endfor %}
+			{% for row in image_sports|batch(3)  %}
+				<div class="row mt-2" aiv="cls: aiv-slide-left; children: .card; delay: 200; delay_all: 500; repeat;">
+					{% for image_sport in row %}
+						<div class="col-md-4">
+							<div class=" card thumbnail bg-white rounded shadow article">
+								<div class=" mw-100 overflow-hidden">
+									<img class="img-responsive" src=" {{ vich_uploader_asset(image_sport, 'imageFile')|imagine_filter('sport')}}" class="rounded mx-auto d-block w-100" alt="{{image_sport.id}}">
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			{% endfor %}
 		</div>
-	</div>
+	</section>
+	<script type="text/javascript" src="../dist/aiv.min.js"></script>
+	<script type="text/javascript">
+		;
+aiv.init()
+	</script>
+	<script>
+		const el = document.getElementById('event_test');
+el.addEventListener('aiv/in_view', function () {
+console.log('in_view')
+});
+el.addEventListener('aiv/out_of_view', function () {
+console.log('out_of_view')
+});
+	</script>
+	<script>
+		const counters = document.querySelectorAll('.counter');
+const speed = 200; // The lower the slower
+
+counters.forEach(counter => {
+const updateCount = () => {
+const target = + counter.getAttribute('data-target');
+const count = + counter.innerText;
+
+// Lower inc to slow and higher to slow
+const inc = target / speed;
+
+// console.log(inc);
+// console.log(count);
+
+// Check if target is reached
+if (count < target) { // Add inc to count and output in counter
+counter.innerText = count + inc;
+// Call function every ms
+setTimeout(updateCount, 1);
+} else {
+counter.innerText = target;
+}
+};
+
+updateCount();
+});
+	</script>
 {% endblock %}

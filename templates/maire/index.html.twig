@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Maire index{% endblock %}
+
+{% block body %}
+    <h1>Maire index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomPrenom</th>
+                <th>Proffesion</th>
+                <th>DebutFonction</th>
+                <th>FinFonction</th>
+                <th>IsActive</th>
+                <th>ImageName</th>
+                <th>PublishedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for maire in maires %}
+            <tr>
+                <td>{{ maire.id }}</td>
+                <td>{{ maire.nomPrenom }}</td>
+                <td>{{ maire.proffesion }}</td>
+                <td>{{ maire.debutFonction ? maire.debutFonction|date('Y-m-d') : '' }}</td>
+                <td>{{ maire.finFonction ? maire.finFonction|date('Y-m-d') : '' }}</td>
+                <td>{{ maire.isActive ? 'Yes' : 'No' }}</td>
+                <td>{{ maire.imageName }}</td>
+                <td>{{ maire.publishedAt ? maire.publishedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ maire.updatedAt ? maire.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('maire_show', {'id': maire.id}) }}">show</a>
+                    <a href="{{ path('maire_edit', {'id': maire.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('maire_new') }}">Create new</a>
+{% endblock %}

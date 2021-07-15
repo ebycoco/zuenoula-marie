@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Maire{% endblock %}
+
+{% block body %}
+    <h1>Create new Maire</h1>
+
+    {{ include('maire/_form.html.twig') }}
+
+    <a href="{{ path('maire_index') }}">back to list</a>
+{% endblock %}

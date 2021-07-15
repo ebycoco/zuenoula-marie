@@ -1,0 +1,23 @@
+{% extends 'AdminBase1.html.twig' %}
+
+
+{% block title %}Edit Administration De la Municipalité
+{% endblock %}
+
+{% block body %}
+	<!-- Begin Page Content -->
+	<div class="container-fluid">
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800">Modifier l'Administration De la Municipalité</h1>
+			<a href="{{ path('admin_administration_de_municipalite_index') }}" class="btn btn-info">Retour</a>
+
+
+			{{ include('admin/administration_de_municipalite/_delete_form.html.twig') }}
+
+		</div>
+
+		{{ include('admin/administration_de_municipalite/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+	</div>
+	<!-- /.container-fluid -->
+{% endblock %}

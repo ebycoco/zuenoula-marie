@@ -5,7 +5,8 @@
 			<div class="col-md-4 ">
 				<div class="card bg-white rounded shadow article">
 					<div class="mw-100 overflow-hidden">
-						<a href="{{ path('article_detail',{'slug': article.slug}) }}"><img src="{{ vich_uploader_asset(article, 'imageFile')|imagine_filter('article')}}" class="rounded mx-auto d-block w-100" alt="{{article.titre|u.truncate(20,'...',false) | raw}}"></a>
+						<a href="{{ path('article_detail',{'slug': article.slug}) }}">
+							<img src="{{ vich_uploader_asset(article, 'imageFile')|imagine_filter('article')}}" class="rounded mx-auto d-block w-100" alt="{{article.titre|u.truncate(20,'...',false) | raw}}"></a>
 
 
 					</div>
@@ -15,7 +16,7 @@
 						<div class="row">
 							<div class="col-lg-12">
 								<p>Publier :
-										<time class="timeago">{{article.publishedAt| ago(locale='fr')}}
+									<time class="timeago">{{article.publishedAt| ago(locale='fr')}}
 
 									</time>
 								</p>

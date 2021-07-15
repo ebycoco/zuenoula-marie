@@ -1,0 +1,130 @@
+{% extends 'AdminBase1.html.twig' %}
+
+{% block title %}Administration De la Municipalité
+
+{% endblock %}
+{% block stylesheets %}<link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+
+	<div class="container-fluid">
+		{% include 'admin/adminbase/notification.html.twig'%}
+
+		<!-- Page Heading -->
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800">Dashboard Administration De la Municipalité</h1>
+
+			<a href="{{ path('admin_administration_de_municipalite_new') }}" class="btn btn-primary btn-icon-split">
+				<span class="icon text-white-50">
+					<i class="fas fa-plus"></i>
+				</span>
+				<span class="text">Nouvel Administration De la Municipalité</span>
+
+			</a>
+		</div>
+		<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">Liste des Administrations De la Municipalité</h6>
+
+			</div>
+			<div class="card shadow mb-4">
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered" id="" width="100%" cellspacing="0">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Titre</th>
+									<th>publié le</th>
+									<th>actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for administration_de_municipalite in administration_de_municipalites %}
+
+									<tr>
+										<td>{{ administration_de_municipalite.id }}</td>
+
+										<td>{{ administration_de_municipalite.titre }}</td>
+										<td>{{ administration_de_municipalite.publishedAt ? administration_de_municipalite.publishedAt|date('Y-m-d H:i:s') : '' }}</td>
+										<td>
+											<div class="row">
+												<div class="col-md-4">
+													<a href="" class="btn btn-warning btn-icon-split" data-toggle="modal" data-target="#modal{{ administration_de_municipalite.id }}" type="button">
+														<span class="icon text-white-50">
+															<i class="fas fa-eye"></i>
+														</span>
+														<span class="text">Voir</span>
+													</a>
+												</div>
+												<div class="col-md-4">
+													<a href="{{ path('admin_administration_de_municipalite_edit', {'id': administration_de_municipalite.id}) }}" class="btn btn-primary btn-icon-split">
+
+														<span class="icon text-white-50">
+															<i class="fas fa-pen" aria-hidden="true"></i>
+														</span>
+														<span class="text">Modifier</span>
+													</a>
+												</div>
+												<div class="col-md-4">
+													<form method="post" action="{{ path('admin_administration_de_municipalite_delete', {'id': administration_de_municipalite.id}) }}" onsubmit="return confirm('Etre vous sûr de vouloir supprimer l'administration de la municipalité {{ administration_de_municipalite.titre }} ?');">
+														<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ administration_de_municipalite.id) }}">
+														<button class="btn btn-danger btn-icon-split">
+															<span class="icon text-white-50">
+																<i class="fas fa-trash"></i>
+															</span>
+														</button>
+													</form>
+												</div>
+											</div>
+
+											<div class="modal fade" id="modal{{ administration_de_municipalite.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title mt-0">
+																{{ administration_de_municipalite.titre }}</h5>
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<div class="modal-body">
+															<div class="card profil">
+																<div class="card-body">
+																	{{ administration_de_municipalite.contenue|raw }}
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- /.modal-content -->
+												</div>
+												<!-- /.modal-dialog -->
+											</div>
+										</td>
+
+									</tr>
+								{% else %}
+									<tr>
+										<td colspan="4">Pas de administration_de_municipalite</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+						<div class="col-md-6 offset-md-3">
+							{% do administration_de_municipalites.setPageRange(3) %}
+
+							{{knp_pagination_render(administration_de_municipalites,'base/pagination.html.twig')}}
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+{% endblock %}

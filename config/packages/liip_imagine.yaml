@@ -15,6 +15,12 @@ liip_imagine:
         thumbnail:
           size: [100, 75]
           mode: outbound
+    sport:
+      quality: 75
+      filters:
+        thumbnail:
+          size: [350, 175]
+          mode: outbound
     article:
       quality: 75
       filters:

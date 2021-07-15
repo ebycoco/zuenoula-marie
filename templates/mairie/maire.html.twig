@@ -32,32 +32,33 @@
 				<h4 align="center" style="text-transform: uppercase; font-weight: bold;">PRESENTATION DE LA MAIRIE</h4><br>
 				<div class="row">
 					<div class="col-md-4">
-						<img src="{{asset('media/maire/IMG-20191004-WA0001.jpg')}}" width="100%" alt="" srcset="">
-						<legend>
-							<small>DJE BI DJE Olivier Vamy</small>
-						</legend>
+						{% for mairesRece in mairesRece %}
+							<img src="{{ vich_uploader_asset(mairesRece, 'imageFile')}}" width="100%" alt="{{ mairesRece.nomPrenom}}" srcset="">
+							<legend>
+								<small>{{mairesRece.nomPrenom}}</small>
+							</legend>
+						{% endfor %}
 					</div>
 					<div class="col-md-8">
-						<p>Construite sur la rive gauche du boulevard principal de la ville en 19…, sur un seul niveau,  la Mairie est située à proximité de la sous-préfecture de Zuenoula. Le bâtiment se présente sous la forme d'une villa.
-						</p>
+						{% for presentation_mairie in presentation_mairies %}
+							{{ presentation_mairie.contenue|raw }}
+						{% endfor %}
 					</div>
 				</div>
 				<h4 align="center" style="text-transform: uppercase; font-weight: bold;">LES DIFFERENTS MAIRES DEPUIS LA CREATION DE LA COMMUNE.</h4>
-				<p>
-					1er DJE BI DJE Alexandre
-				</p>
-				<p>
-					2ème DOUA BI TOUHI ROGER
-				</p>
-				<p>
-					3ème ZAN BI GOI Ferdinand
-				</p>
-				<p>
-					4ème YAO Clément
-				</p>
-				<p>
-					5ème DJE BI DJE Olivier Vamy
-				</p>
+				{% for maire in maires %}
+					{% if maire.id == 1 %}
+						<p>
+							{{maire.id}}er
+							{{maire.nomPrenom}}
+						</p>
+					{% else %}
+						<p>
+							{{maire.id}}ème
+							{{maire.nomPrenom}}
+						</p>
+					{% endif %}
+				{% endfor %}
 			</div>
 		</div>
 	</div>

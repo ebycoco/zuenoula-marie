@@ -9,9 +9,12 @@ use App\Form\ContactType;
 use App\Repository\ArticleRepository;
 use App\Repository\CoinRepository;
 use App\Repository\FlashRepository;
+use App\Repository\HotelRestaurantRepository;
 use App\Repository\MotmaireRepository;
 use App\Repository\SliderRepository;
 use App\Repository\VideoRepository;
+use App\Repository\SportRepository;
+use App\Repository\ImageSportRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use phpDocumentor\Reflection\PseudoTypes\True_;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -144,16 +147,35 @@ class HomeController extends AbstractController
     }
 
     #[Route('/Sport', name: 'sport_index', methods: ['GET', 'POST'])]
-    public function sport(): Response
-    {
+    public function sport(
+        SportRepository $sportRepository,
+        ImageSportRepository $imageSportRepository,
+        PaginatorInterface $paginator,
+        Request $request
+    ): Response {
+        $data = $sportRepository->findBy([], ['publishedAt' => 'DESC']);
+        $sports = $paginator->paginate($data, $request->query->getint('page', 1), 1);
 
-        return $this->render('sport/sport_index.html.twig');
+        $data = $imageSportRepository->findBy([], ['publishedAt' => 'DESC']);
+        $image_sports = $paginator->paginate($data, $request->query->getint('page', 1), 6);
+
+        return $this->render('sport/sport_index.html.twig', [
+            'sports' => $sports,
+            'image_sports' => $image_sports,
+        ]);
     }
 
     #[Route('/Hotel', name: 'hotel_index', methods: ['GET', 'POST'])]
-    public function hotel(): Response
-    {
+    public function hotel(
+        HotelRestaurantRepository $hotelRestaurantRepository,
+        PaginatorInterface $paginator,
+        Request $request
+    ): Response {
+        $data = $hotelRestaurantRepository->findBy([], ['publishedAt' => 'DESC']);
+        $hotel_restaurants = $paginator->paginate($data, $request->query->getint('page', 1), 6);
 
-        return $this->render('hotel/hotel_index.html.twig');
+        return $this->render('hotel/hotel_index.html.twig', [
+            'hotel_restaurants' => $hotel_restaurants,
+        ]);
     }
 }
