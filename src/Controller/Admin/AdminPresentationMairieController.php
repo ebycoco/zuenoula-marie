@@ -48,7 +48,7 @@ class AdminPresentationMairieController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-    #[Route('/activation/{id}', name: 'article_activation', methods: ['GET'])]
+    #[Route('/activation/{id}', name: 'presentation_activation', methods: ['GET'])]
     public function activation(PresentationMairie $PresentationMairie)
     {
         $PresentationMairie->setActive(($PresentationMairie->getActive() ? false : true));

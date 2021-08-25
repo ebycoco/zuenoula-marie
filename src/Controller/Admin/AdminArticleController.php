@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/admin/article', name: 'admin_')]
+#[Route('/admin/articles', name: 'admin_')]
 class AdminArticleController extends AbstractController
 {
     #[Route('/', name: 'article_index', methods: ['GET'])]
@@ -47,7 +47,6 @@ class AdminArticleController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
     #[Route('/activation/{id}', name: 'article_activation', methods: ['GET'])]
     public function activation(Article $article)
     {

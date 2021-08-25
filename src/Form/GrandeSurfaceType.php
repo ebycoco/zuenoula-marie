@@ -6,6 +6,7 @@ use App\Entity\GrandeSurface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class GrandeSurfaceType extends AbstractType
 {
@@ -14,11 +15,18 @@ class GrandeSurfaceType extends AbstractType
         $builder
             ->add('titre')
             ->add('description')
-            ->add('imageName')
-            ->add('publishedAt')
-            ->add('updatedAt')
-            ->add('user')
-        ;
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
+                'allow_delete' => true,
+                'download_link' => false,
+                'image_uri' => false,
+                'label' => 'Image  (JPG or PNG file)',
+                'attr' => [
+                    'class' => 'filestyle',
+                    'data-buttonname' => 'btn-secondary',
+                ]
+
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -2,7 +2,9 @@
 
 {% block title %}Article index
 {% endblock %}
-{% block stylesheets %}<link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+{% block stylesheets %}
+	<link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+
 {% endblock %}
 
 
@@ -13,7 +15,7 @@
 
 		<!-- Page Heading -->
 		<div class="d-sm-flex align-items-center justify-content-between mb-4">
-			<h1 class="h3 mb-0 text-gray-800">Dashboard d'article</h1>
+			<h1 class="h3 mb-0 text-gray-800">Articles</h1>
 			<a href="{{ path('admin_article_new') }}" class="btn btn-primary btn-icon-split">
 				<span class="icon text-white-50">
 					<i class="fas fa-plus"></i>
@@ -27,7 +29,7 @@
 			</div>
 			<div class="card shadow mb-4">
 				<div class="card-body">
-					<div class="table-responsive">
+					<div class="table-responsive article_index">
 						<table class="table table-bordered" id="" width="100%" cellspacing="0">
 							<thead>
 								<tr>
@@ -53,9 +55,9 @@
 										</td>
 
 										<td>
-											<input type="checkbox" id="switch{{ article.id}}" switch="bool" {% if article.active %} checked {% endif %} data-id=" {{ article.id}} "/>
+											<input type="checkbox" id="switch{{article.id}}" switch="bool" {% if article.active %} checked {% endif %} data-id="{{article.id}}"/>
 
-											<label for="switch{{ article.id}}" data-on-label="Yes" data-off-label="No"></label>
+											<label for="switch{{article.id}}" data-on-label="Yes" data-off-label="No"></label>
 
 
 										</td>
@@ -103,12 +105,6 @@
 
 {% endblock %}
 {% block javascripts %}
-	<!-- Page level plugins -->
-	<script src="{{asset('vendor/datatables/jquery.dataTables.min.js')}}"></script>
-	<script src="{{asset('vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
-
-	<!-- Page level custom scripts -->
-	<script src="{{asset('js/demo/datatables-demo.js')}}"></script>
 
 	<script>
 		window.onload = () => {
@@ -116,7 +112,8 @@ let activer = document.querySelectorAll("[type=checkbox]")
 for (let boutton of activer) {
 boutton.addEventListener("click", function () {
 let xmlhttp = new XMLHttpRequest;
-xmlhttp.open("GET", `/admin/article/activation/${
+xmlhttp.open("GET", `/admin/articles/activation/${
+
 this.dataset.id
 }`)
 xmlhttp.send()
@@ -124,4 +121,10 @@ xmlhttp.send()
 }
 }
 	</script>
+	<!-- Page level plugins -->
+	<script src="{{asset('vendor/datatables/jquery.dataTables.min.js')}}"></script>
+	<script src="{{asset('vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+
+	<!-- Page level custom scripts -->
+	<script src="{{asset('js/demo/datatables-demo.js')}}"></script>
 {% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'AdminBase1.html.twig' %}
+
+{% block title %}InfoService index
+
+{% endblock %}
+{% block stylesheets %}<link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+{% endblock %}
+
+
+{% block body %}
+
+	<div class="container-fluid">
+		{% include 'admin/adminbase/notification.html.twig'%}
+
+		<!-- Page Heading -->
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800">Information de service</h1>
+			<a href="{{ path('admin_info_service_new') }}" class="btn btn-primary btn-icon-split">
+
+				<span class="icon text-white-50">
+					<i class="fas fa-plus"></i>
+				</span>
+				<span class="text">Nouvel Information</span>
+			</a>
+		</div>
+		<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">Liste des informations de service</h6>
+			</div>
+			<div class="card shadow mb-4">
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered" id="" width="100%" cellspacing="0">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Titre</th>
+									<th>Créer le</th>
+									<th>actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for info_service in info_services %}
+									<tr>
+										<td>{{ info_service.id }}</td>
+
+										<td>{{ info_service.titre }}</td>
+										<td>{{ info_service.publishedAt ? info_service.publishedAt|date('m-d-Y H:i:s') : '' }}</td>
+										<td>
+											<a href="{{ path('admin_info_service_show', {'id': info_service.id}) }}" class="btn btn-warning btn-icon-split">
+												<span class="icon text-white-50">
+													<i class="fas fa-eye"></i>
+												</span>
+												<span class="text">Voir</span>
+											</a>
+											<a href="{{ path('admin_info_service_edit', {'id': info_service.id}) }}" class="btn btn-primary btn-icon-split">
+
+												<span class="icon text-white-50">
+													<i class="fas fa-pen" aria-hidden="true"></i>
+												</span>
+												<span class="text">Modifier</span>
+											</a>
+
+										</td>
+									</tr>
+								{% else %}
+									<tr>
+										<td colspan="4">no records found</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+						<div class="col-md-6 offset-md-3">
+							{% do info_services.setPageRange(3) %}
+							{{knp_pagination_render(info_services,'base/pagination.html.twig')}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

@@ -1,34 +1,31 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Video;
 use App\Form\VideoType;
 use App\Repository\VideoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/video')]
-class VideoController extends AbstractController
+#[Route('/admin/video', name: 'admin_')]
+class AdminVideoController extends AbstractController
 {
     #[Route('/', name: 'video_index', methods: ['GET'])]
-    public function index(VideoRepository $videoRepository): Response
-    {
-        return $this->render('video/index.html.twig', [
-            'videos' => $videoRepository->findAll(),
+    public function index(
+        VideoRepository $videoRepository,
+        PaginatorInterface $paginator,
+        Request $request
+    ): Response {
+        $data = $videoRepository->findBy([], ['publishedAt' => 'DESC']);
+        $video = $paginator->paginate($data, $request->query->getint('page', 1), 6);
+        return $this->render('admin/video/index.html.twig', [
+            'videos' => $video,
         ]);
     }
-
-    #[Route('/liste-video', name: 'video_liste', methods: ['GET'])]
-    public function listearticle(VideoRepository $videoRepository): Response
-    {
-        return $this->render('video/video.html.twig', [
-            'videos' => $videoRepository->findAll(),
-        ]);
-    }
-
     #[Route('/new', name: 'video_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
@@ -38,13 +35,14 @@ class VideoController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $video->setUser($this->getUser());
             $entityManager->persist($video);
             $entityManager->flush();
-
-            return $this->redirectToRoute('video_index');
+            $this->addFlash('success', 'Ajouter avec success !');
+            return $this->redirectToRoute('admin_video_index');
         }
 
-        return $this->render('video/new.html.twig', [
+        return $this->render('admin/video/new.html.twig', [
             'video' => $video,
             'form' => $form->createView(),
         ]);
@@ -53,7 +51,7 @@ class VideoController extends AbstractController
     #[Route('/{id}', name: 'video_show', methods: ['GET'])]
     public function show(Video $video): Response
     {
-        return $this->render('video/show.html.twig', [
+        return $this->render('admin/video/show.html.twig', [
             'video' => $video,
         ]);
     }
@@ -66,11 +64,11 @@ class VideoController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('video_index');
+            $this->addFlash('info', 'Votre modification a été effectué avec success !');
+            return $this->redirectToRoute('admin_video_index');
         }
 
-        return $this->render('video/edit.html.twig', [
+        return $this->render('admin/video/edit.html.twig', [
             'video' => $video,
             'form' => $form->createView(),
         ]);
@@ -84,7 +82,7 @@ class VideoController extends AbstractController
             $entityManager->remove($video);
             $entityManager->flush();
         }
-
-        return $this->redirectToRoute('video_index');
+        $this->addFlash('success', 'Supprimer avec success !');
+        return $this->redirectToRoute('admin_video_index');
     }
 }

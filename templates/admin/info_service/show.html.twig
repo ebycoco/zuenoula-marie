@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InfoService{% endblock %}
+
+{% block body %}
+    <h1>InfoService</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ info_service.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ info_service.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ info_service.description }}</td>
+            </tr>
+            <tr>
+                <th>PublishedAt</th>
+                <td>{{ info_service.publishedAt ? info_service.publishedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ info_service.updatedAt ? info_service.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('info_service_index') }}">back to list</a>
+
+    <a href="{{ path('info_service_edit', {'id': info_service.id}) }}">edit</a>
+
+    {{ include('info_service/_delete_form.html.twig') }}
+{% endblock %}

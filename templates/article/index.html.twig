@@ -80,19 +80,4 @@
 	</div>
 
 {% endblock %}
-{% block javascripts %}
-	<script>
-		window.onload = () => {
-let activer = document.querySelectorAll("[type=checkbox]")
-for (let boutton of activer) {
-boutton.addEventListener("click", function () {
-let xmlhttp = new XMLHttpRequest;
-xmlhttp.open("GET", `/admin/article/activation/${
-this.dataset.id
-}`)
-xmlhttp.send()
-})
-}
-}
-	</script>
-{% endblock %}
+{% block javascripts %}{% endblock %}

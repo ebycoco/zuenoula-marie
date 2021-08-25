@@ -33,7 +33,6 @@
 	</div>
 	<div class="container">
 		{% for row in hotel_restaurants|batch(3)  %}
-
 			<div class="row mt-2" aiv="cls: aiv-slide-left; children: .card; delay: 200; delay_all: 500; repeat;">
 				{% for hotel_restaurant in row %}
 					<div class="col-md-4">
@@ -66,64 +65,29 @@
 		</div>
 	</div>
 	<div class="container">
-		<div class="row">
-			<div class=" col-md-4">
-				<div class="thumbnail">
-					<img class="img-responsive" src="{{asset('media/hopital.jpg')}}" width="100%" alt="...">
-					<div style="text-align:center;" class="caption">
-						<h3>Hopital de Zuenoula</h3>
-						<p>
-							<a href="#" class="btn btn-info" role="button">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								Voir</a>
-						</p>
+		{% for row in grande_restaurants|batch(3)  %}
+			<div class="row mt-2" aiv="cls: aiv-slide-left; children: .card; delay: 200; delay_all: 500; repeat;">
+				{% for grande_restaurant in row %}
+					<div class=" col-md-4">
+						<div class="card thumbnail bg-white rounded shadow article">
+							<div class=" mw-100 overflow-hidden">
+								<img class="img-responsive" src=" {{ vich_uploader_asset(grande_restaurant, 'imageFile')|imagine_filter('sport')}}" class="rounded mx-auto d-block w-100" alt="{{grande_restaurant.id}}">
+							</div>
+							<div style="text-align:center;" class="caption">
+								<h3>{{grande_restaurant.titre}}</h3>
+								<p>
+									<a href="#" class="btn btn-info" role="button">
+										<span class="glyphicon glyphicon-eye-open"></span>
+										Voir</a>
+								</p>
+							</div>
+						</div>
 					</div>
-				</div>
+				{% endfor %}
 			</div>
-			<div class=" col-md-4">
-				<div class="thumbnail">
-					<img class="img-responsive" src="{{asset('media/tresor.jpg')}}" width="100%" alt="...">
-					<div style="text-align:center;" class="caption">
-						<h3>Tresor public</h3>
-						<p>
-							<a href="#" class="btn btn-info" role="button">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								Voir</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class=" col-md-4">
-				<div class="thumbnail">
-					<img class="img-responsive" src="{{asset('media/total.jpg')}}" width="100%" alt="...">
-					<div style="text-align:center;" class="caption">
-						<h3>
-							Station SIFO ENERGIE</h3>
-						<p>
-							<a href="#" class="btn btn-info" role="button">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								Voir</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class=" col-md-4">
-				<div class="thumbnail">
-					<img class="img-responsive" src="{{asset('media/commi.jpg')}}" width="100%" alt="...">
-					<div style="text-align:center;" class="caption">
-						<h3>Commissariat de zuenoula</h3>
-						<p>
-							<a href="#" class="btn btn-info" role="button">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								Voir</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
+		{% endfor %}
 	</div>
+
 	<script type="text/javascript" src="../dist/aiv.min.js"></script>
 	<script type="text/javascript">
 		;

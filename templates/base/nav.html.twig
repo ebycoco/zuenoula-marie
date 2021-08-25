@@ -36,7 +36,7 @@
 						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 							<a class="dropdown-item" href="{{path('commune_index')}}">La commune en bref</a>
 							<a class="dropdown-item" href="{{path('Presentation_maire')}}">La mairie et son administration</a>
-<a class="dropdown-item" href="{{path('activites_index')}}">Les différentes activités économique de la commune</a>
+							<a class="dropdown-item" href="{{path('activites_index')}}">Les différentes activités économique de la commune</a>
 
 							<a class="dropdown-item" href="{{path('commune_image')}}">La commune en images</a>
 
@@ -86,11 +86,15 @@
 							<a class="dropdown-item" href="{{path('contact_nouveau')}}">Contacter nos services</a>
 						</div>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{path('app_login')}}">Login</a>
-					</li>
-
-
+					{% if app.user %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('app_logout')}}">Déconnexion</a>
+						</li>
+					{% else %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('app_login')}}">Login</a>
+						</li>
+					{% endif %}
 				</ul>
 			</div>
 		</div>

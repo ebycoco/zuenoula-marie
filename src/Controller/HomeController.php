@@ -9,6 +9,7 @@ use App\Form\ContactType;
 use App\Repository\ArticleRepository;
 use App\Repository\CoinRepository;
 use App\Repository\FlashRepository;
+use App\Repository\GrandeSurfaceRepository;
 use App\Repository\HotelRestaurantRepository;
 use App\Repository\MotmaireRepository;
 use App\Repository\SliderRepository;
@@ -168,14 +169,26 @@ class HomeController extends AbstractController
     #[Route('/Hotel', name: 'hotel_index', methods: ['GET', 'POST'])]
     public function hotel(
         HotelRestaurantRepository $hotelRestaurantRepository,
+        GrandeSurfaceRepository $grandeSurfaceRepository,
         PaginatorInterface $paginator,
         Request $request
     ): Response {
         $data = $hotelRestaurantRepository->findBy([], ['publishedAt' => 'DESC']);
+        $dataGrandeSurface = $grandeSurfaceRepository->findBy([], ['publishedAt' => 'DESC']);
         $hotel_restaurants = $paginator->paginate($data, $request->query->getint('page', 1), 6);
+        $grande_restaurants = $paginator->paginate($dataGrandeSurface, $request->query->getint('page', 1), 6);
 
         return $this->render('hotel/hotel_index.html.twig', [
             'hotel_restaurants' => $hotel_restaurants,
+            'grande_restaurants' => $grande_restaurants,
+        ]);
+    }
+
+    #[Route('/liste-video', name: 'video_liste', methods: ['GET'])]
+    public function listearticle(VideoRepository $videoRepository): Response
+    {
+        return $this->render('video/video.html.twig', [
+            'videos' => $videoRepository->findAll(),
         ]);
     }
 }

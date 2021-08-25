@@ -6,10 +6,11 @@
 	<div class="container-fluid">
 		<div class="d-sm-flex align-items-center justify-content-between mb-4">
 			<h1 class="h3 mb-0 text-gray-800">Modifier Municipalité</h1>
-			<a href="{{ path('admin_Municipalite_index') }}" class="btn btn-info">Retour</a>
-			{{ include('admin/Municipalite/_delete_form.html.twig') }}
+			<a href="{{ path('admin_municipalite_index') }}" class="btn btn-info">Retour</a>
+
+			{{ include('admin/municipalite/_delete_form.html.twig') }}
 		</div>
-		{{ include('admin/Municipalite/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+		{{ include('admin/municipalite/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
 	</div>
 	<!-- /.container-fluid -->

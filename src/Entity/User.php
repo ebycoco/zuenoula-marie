@@ -232,6 +232,11 @@ class User implements UserInterface, Serializable
      */
     private $municipalites;
 
+    /**
+     * @ORM\OneToMany(targetEntity=InfoService::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $infoServices;
+
     public function __construct()
     {
         $this->services = new ArrayCollection();
@@ -251,6 +256,7 @@ class User implements UserInterface, Serializable
         $this->grandeSurfaces = new ArrayCollection();
         $this->presentationMairies = new ArrayCollection();
         $this->municipalites = new ArrayCollection();
+        $this->infoServices = new ArrayCollection();
     }
 
     public function __toString()
@@ -1080,6 +1086,36 @@ class User implements UserInterface, Serializable
             // set the owning side to null (unless already changed)
             if ($municipalite->getUser() === $this) {
                 $municipalite->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|InfoService[]
+     */
+    public function getInfoServices(): Collection
+    {
+        return $this->infoServices;
+    }
+
+    public function addInfoService(InfoService $infoService): self
+    {
+        if (!$this->infoServices->contains($infoService)) {
+            $this->infoServices[] = $infoService;
+            $infoService->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInfoService(InfoService $infoService): self
+    {
+        if ($this->infoServices->removeElement($infoService)) {
+            // set the owning side to null (unless already changed)
+            if ($infoService->getUser() === $this) {
+                $infoService->setUser(null);
             }
         }
 
